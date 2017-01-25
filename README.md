@@ -12,3 +12,14 @@ Considering the complexity of a Cloud infrastructure and the need to model propo
 
 Accordingly, in this article we present CloudSim Plus, a new, full-featured, re-designed, highly extensible and modern Java 8 framework to enable modeling and simulation of Cloud Computing infrastructure, services, underlying mechanisms and algorithms.
 
+## CloudSim Plus Overview
+
+### Overview
+### CloudSim
+### Motivation
+### Exclusive Features
+
+## Usage Examples
+
+## Future Work
+
