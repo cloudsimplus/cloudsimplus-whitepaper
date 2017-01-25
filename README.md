@@ -8,5 +8,7 @@ The advances brought by Cloud Computing are backup up by academy and industry re
 
 Considering the complexity of a Cloud infrastructure and the need to model proposed solutions and evaluate them in a quick, cheap and repeatable way, using a controlled environment that makes it easy to monitor and collect metrics, computer-based simulation is largely used to carry out research in this field.
 
+Accordingly, in this article we present CloudSim Plus, a new, full-featured, re-designed, highly extensible and modern Java 8 framework to enable modeling and simulation of Cloud Computing infrastructure, services, underlying mechanisms and algorithms. 
+
 
 
