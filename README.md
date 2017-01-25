@@ -1,6 +1,6 @@
 # CloudSim Plus: A Modern Java 8 Framework for Modeling and Simulation of Cloud Computing Infrastructures and Services
 
-{% creativecommons type="by-nc-nd" %}
+{% creativecommons type="by-sa" %}
 
 {% endcreativecommons %}
 
