@@ -21,5 +21,7 @@ Accordingly, in this article we present CloudSim Plus, a new, full-featured, re-
 
 ## Usage Examples
 
-## Future Work
+## Conclusion and Future Work
+
+## Acknowledge 
 
