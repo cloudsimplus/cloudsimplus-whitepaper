@@ -10,13 +10,13 @@ The advances brought by Cloud Computing are backup up by academy and industry re
 
 Considering the complexity of a Cloud infrastructure and the need to model proposed solutions and evaluate them in a quick, cheap and repeatable way, using a controlled environment that makes it easy to monitor and collect metrics, computer-based simulation is largely used to carry out research in this field.
 
-Accordingly, this article presents CloudSim Plus, a new, full-featured, re-designed, highly extensible and modern Java 8 framework to enable modeling and simulation of Cloud Computing infrastructure, services, underlying mechanisms and algorithms. It is an open source project available at <http://cloudsimplus.org> and [Maven Central](http://cloudsimplus.org/docs/maven.html).
+Accordingly, in this article we present CloudSim Plus, a new, full-featured, re-designed, highly extensible and modern Java 8 framework to enable modeling and simulation of Cloud Computing infrastructure, services, underlying mechanisms and algorithms. It is an open source project available at <http://cloudsimplus.org> and [Maven Central](http://cloudsimplus.org/docs/maven.html).
 
 ## Overview
-CloudSim Plus is a simulation framework based on CloudSim 3, that went through an extensive re-design and re-engineering process to provide an updated, modern, more accurate, highly extensible, easier-to-use and state-of-the-art framework that ensures sustainable maintainability for long-term evolution. improve several software engineering metrics such as [coupling](https://en.wikipedia.org/wiki/Coupling_(computer_programming)), [cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science))
+CloudSim Plus is a simulation framework based on CloudSim 3, that went through an extensive re-design and re-engineering process to provide an updated, modern, more accurate, highly extensible, easier-to-use and state-of-the-art framework that ensures sustainable maintainability for long-term evolution. To achieve these goals, CloudSim Plus is founded on several software design and engineering metrics, principles and practices such as [coupling](https://en.wikipedia.org/wiki/Coupling_(computer_programming)), [cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science)), [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern), [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)) and other ones like [KISS](https://en.wikipedia.org/wiki/KISS_principle) and [DRY](https://pt.wikipedia.org/wiki/Don't_repeat_yourself).
 
-
-## Motivation
+## Phylosophy and Motivation
+[Software quality](https://en.wikipedia.org/wiki/Software_quality) has increasingly become an important aspect for software industry, as can be seen by the number of different software development methodologies and processes such as [Test-driven development](https://en.wikipedia.org/wiki/Test-driven_development), [Behavior-driven development](https://en.wikipedia.org/wiki/Behavior-driven_development), [Business-driven development](https://en.wikipedia.org/wiki/Business-driven_development) and Explaining how the mentioned principles and practices increa
 
 ## Exclusive Features
 
