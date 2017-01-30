@@ -19,7 +19,7 @@ CloudSim Plus is a simulation framework based on CloudSim 3, that went through a
 ## Phylosophy and Motivation
 [Software quality](https://en.wikipedia.org/wiki/Software_quality) has increasingly become an important aspect for software industry, as can be seen by the number of different software design and development methodologies and processes such as [Domain-Driven Design (DDD)](https://en.wikipedia.org/wiki/Domain-driven_design), [Test-Driven Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development), [Behavior-Driven Development (BDD)](https://en.wikipedia.org/wiki/Behavior-driven_development), Clean Code Programming and many more. Different tools have been used to collect and monitor software quality metrics to try detecting issues as soon as possible, such as [Static Code Analysis](https://en.wikipedia.org/wiki/Static_program_analysis) and [Integration Testing](https://en.wikipedia.org/wiki/Integration_testing) in an automated [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) environment.
 
-We understand that the same software quality pursued by the software industry must as well be pursued by academic projects in order to avoid [software erosion](https://en.wikipedia.org/wiki/Software_rot). 
+We understand that the same software quality pursued by the software industry must as well be pursued by academic projects in order to avoid [software erosion](https://en.wikipedia.org/wiki/Software_rot) and reduce [technical debt](https://en.wikipedia.org/wiki/Technical_debt). 
 
 
 
