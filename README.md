@@ -13,7 +13,7 @@ Considering the complexity of a Cloud infrastructure and the need to model propo
 Accordingly, this article presents CloudSim Plus, a new, full-featured, re-designed, highly extensible and modern Java 8 framework to enable modeling and simulation of Cloud Computing infrastructure, services, underlying mechanisms and algorithms. It is an open source project available at <http://cloudsimplus.org> and [Maven Central](http://cloudsimplus.org/docs/maven.html).
 
 ## Overview
-CloudSim Plus is a simulation framework based on CloudSim 3, that went through an extensive re-design and re-engineering process to provide an updated, modern, more accurate, highly extensible, easier-to-use, maintanable  state-of-the-art framework improve several software engineering metrics such as [coupling](https://en.wikipedia.org/wiki/Coupling_(computer_programming)), [cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science))
+CloudSim Plus is a simulation framework based on CloudSim 3, that went through an extensive re-design and re-engineering process to provide an updated, modern, more accurate, highly extensible, easier-to-use and state-of-the-art framework that ensures sustainable maintainability for long-term evolution. improve several software engineering metrics such as [coupling](https://en.wikipedia.org/wiki/Coupling_(computer_programming)), [cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science))
 
 
 ## Motivation
