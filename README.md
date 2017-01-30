@@ -1,7 +1,8 @@
 # CloudSim Plus: A Modern Java 8 Framework for Modeling and Simulation of Cloud Computing Infrastructures and Services
 *By Manoel C. Silva Filho, Raysa L. Oliveira, Claudio C. Monteiro, Pedro R. M. Inácio and Mário M. Freire.*
 
-{% creativecommons type="by-sa" %}{% endcreativecommons %}
+![](https://licensebuttons.net/l/by-sa/4.0/88x31.png)
+This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
 
 ## Introduction
 
