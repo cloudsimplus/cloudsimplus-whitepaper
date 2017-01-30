@@ -1,4 +1,5 @@
 # CloudSim Plus: A Modern Java 8 Framework for Modeling and Simulation of Cloud Computing Infrastructures and Services
+By Manoel C. Silva Filho, Raysa L. Oliveira, Claudio C. Monteiro, Pedro R. M. Inácio and Mário M. Freire.
 
 {% creativecommons type="by-sa" %}{% endcreativecommons %}
 
@@ -16,7 +17,9 @@ Accordingly, in this article we present CloudSim Plus, a new, full-featured, re-
 CloudSim Plus is a simulation framework based on CloudSim 3, that went through an extensive re-design and re-engineering process to provide an updated, modern, more accurate, highly extensible, easier-to-use and state-of-the-art framework that ensures sustainable maintainability for long-term evolution. To achieve these goals, CloudSim Plus is founded on several software design and engineering metrics, principles and practices such as [coupling](https://en.wikipedia.org/wiki/Coupling_(computer_programming)), [cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science)), [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern), [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)) and other ones like [Don't repeat  yourself (DRY)](https://pt.wikipedia.org/wiki/Don't_repeat_yourself) and [KISS](https://en.wikipedia.org/wiki/KISS_principle).
 
 ## Phylosophy and Motivation
-[Software quality](https://en.wikipedia.org/wiki/Software_quality) has increasingly become an important aspect for software industry, as can be seen by the number of different software design and development methodologies and processes such as [Domain-driven design (DDD)](https://en.wikipedia.org/wiki/Domain-driven_design), [Test-driven development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development), [Behavior-driven development (BDD)](https://en.wikipedia.org/wiki/Behavior-driven_development), clean code programming and many more. Different auxiliary tools have been used to 
+[Software quality](https://en.wikipedia.org/wiki/Software_quality) has increasingly become an important aspect for software industry, as can be seen by the number of different software design and development methodologies and processes such as [Domain-Driven Design (DDD)](https://en.wikipedia.org/wiki/Domain-driven_design), [Test-Driven Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development), [Behavior-Driven Development (BDD)](https://en.wikipedia.org/wiki/Behavior-driven_development), Clean Code Programming and many more. Different tools have been used to collect and monitor software quality metrics and try to detect issues as soon as possible, such as [Static Code Analysis](https://en.wikipedia.org/wiki/Static_program_analysis) and [Integration Testing](https://en.wikipedia.org/wiki/Integration_testing) in an automated [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) process. 
+
+
 
 ## Exclusive Features
 
