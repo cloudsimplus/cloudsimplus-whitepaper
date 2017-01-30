@@ -17,7 +17,7 @@ Accordingly, in this article we present CloudSim Plus, a new, full-featured, re-
 
 ## Overview
 
-CloudSim Plus is a simulation framework based on CloudSim 3, that went through an extensive re-design and re-engineering process to provide an updated, modern, more accurate, highly extensible, easier-to-use and state-of-the-art framework that looks for sustainable maintainability for long-term evolution. To achieve these goals, CloudSim Plus is founded on several software design and engineering metrics, principles and practices such as [Coupling](https://en.wikipedia.org/wiki/Coupling_\(computer_programming\)), [Cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science)\), [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern), [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)\) and other ones like [Don't Repeat Yourself \(DRY\)](https://pt.wikipedia.org/wiki/Don't_repeat_yourself) and [KISS](https://en.wikipedia.org/wiki/KISS_principle).
+CloudSim Plus is a simulation framework based on CloudSim 3, that went through an extensive re-design and re-engineering process to provide an updated, modern, more accurate, highly extensible, easier-to-use and state-of-the-art framework that looks for sustainable maintainability for long-term evolution. To achieve these goals, CloudSim Plus is founded on several software design and engineering metrics, principles and practices such as [Coupling](https://en.wikipedia.org/wiki/Coupling_(computer_programming)\), [Cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science)\), [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern), [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)\) and other ones like [Don't Repeat Yourself \(DRY\)](https://pt.wikipedia.org/wiki/Don't_repeat_yourself) and [KISS](https://en.wikipedia.org/wiki/KISS_principle).
 
 ## Philosophy and Motivation
 
@@ -29,9 +29,9 @@ We are strong adepts of open source philosophy. We started by effectively contri
 
 Finally, enforcement of backward compatibility is a common concern in software development, mainly for public APIs such as those ones provided by a framework. However, such a concern slows down software evolution and we contrary understand that a cloud simulation framework is predominantly used for research purposes, even by industry. Cloud simulation scenarios are tightly coupled to a specific version of the simulation framework and after they produces the final results and the research goes on, new scenarios can be built using an updated version of the framework, without worrying about the older scenario. Accordingly, we are not afraid of breaking compatibility so that we can foster project advances.
 
-# Architecture
+## Architecture
 
-
+CloudSim Plus is a Java Maven project that has a simpler and better module and package structures. The entire project is compounded of 4 modules that were re-organized to inherit directly from the parent project, allowing a researcher to quickly have an overview of the structure. Redundant and out-of-date modules such as "distribution" and "documentation" were removed since building distribution artifacts and documentation is already automated using Maven.![](/assets/modules.png)
 
 ## Exclusive Features
 
@@ -62,6 +62,8 @@ CloudSim Plus is a full-featured simulation framework that has introduced long-w
 19. Updated to Java 8, making extensive use of [Lambda Expressions](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html) and [Streams API](http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html) to improve efficiency and provide a cleaner and easier-to-maintain code.
 
 ## Usage Examples
+
+## Current Issues
 
 ## Conclusion and Future Work
 
