@@ -16,12 +16,12 @@ Accordingly, in this article we present CloudSim Plus, a new, full-featured, re-
 ## Overview
 CloudSim Plus is a simulation framework based on CloudSim 3, that went through an extensive re-design and re-engineering process to provide an updated, modern, more accurate, highly extensible, easier-to-use and state-of-the-art framework that ensures sustainable maintainability for long-term evolution. To achieve these goals, CloudSim Plus is founded on several software design and engineering metrics, principles and practices such as [coupling](https://en.wikipedia.org/wiki/Coupling_(computer_programming)), [cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science)), [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern), [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)) and other ones like [Don't repeat  yourself (DRY)](https://pt.wikipedia.org/wiki/Don't_repeat_yourself) and [KISS](https://en.wikipedia.org/wiki/KISS_principle).
 
-## Phylosophy and Motivation
+## Philosophy and Motivation
 [Software quality](https://en.wikipedia.org/wiki/Software_quality) has increasingly become an important aspect for software industry, as can be seen by the number of different software design and development methodologies and processes such as [Domain-Driven Design (DDD)](https://en.wikipedia.org/wiki/Domain-driven_design), [Test-Driven Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development), [Behavior-Driven Development (BDD)](https://en.wikipedia.org/wiki/Behavior-driven_development), Clean Code Programming and many more. Different tools have been used to collect and monitor software quality metrics to try detecting issues as soon as possible, such as [Static Code Analysis](https://en.wikipedia.org/wiki/Static_program_analysis) and [Integration Testing](https://en.wikipedia.org/wiki/Integration_testing) in an automated [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) environment.
 
-We understand that the same software quality pursued by the software industry must as well be pursued by academic projects in order to avoid [software erosion](https://en.wikipedia.org/wiki/Software_rot) and reduce [technical debt](https://en.wikipedia.org/wiki/Technical_debt). 
+We understand that the same software quality pursued by the software industry must as well be pursued by academic projects to reduce [technical debt](https://en.wikipedia.org/wiki/Technical_debt) and avoid [software erosion](https://en.wikipedia.org/wiki/Software_rot), delivering industry-standard quality products. 
 
-
+We are also strong adepts of open source philosophy. We started by effectively contributing to CloudSim and we have a developer in the top position of contributors from [2015 to 2016](https://github.com/Cloudslab/cloudsim/graphs/contributors?from=2015-03-18&to=2017-01-30). However, since CloudSim is not highly compliant with these software design and engineering principles, practices and philosophies and our team have different views of how the framework should evolve, we decided to start CloudSim Plus as an independent fork.
 
 ## Exclusive Features
 
