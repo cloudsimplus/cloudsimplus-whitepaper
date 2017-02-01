@@ -46,9 +46,6 @@ CloudSim Plus Testbeds modules provides some classes that implement simulation t
 
 The CloudSim Plus Benchmarks module is used just internally to measure the overhead of some CloudSim Plus features.
 
-### CloudSim Plus Benchmarks: 
-
-
 ## Exclusive Features
 
 CloudSim Plus is a full-featured simulation framework that has introduced long-waited CloudSim's missing features.
