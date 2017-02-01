@@ -31,18 +31,18 @@ Finally, enforcement of backward compatibility is a common concern in software d
 
 ## Architecture
 
-CloudSim Plus is a Java Maven project that has a simpler and better module and package structures. The entire project is compounded of 4 modules that were re-organized to inherit directly from the parent project, allowing a researcher to quickly have an overview of the structure. Redundant and out-of-date modules such as "distribution" and "documentation" were removed since building distribution artifacts and documentation is already automated using Maven.
+CloudSim Plus is a Java Maven project that has a simpler and better module and package structures. The entire project is compounded of 4 modules that were re-organized to directly inherit from the parent project, allowing a researcher to quickly have an overview of the structure. Redundant and out-of-date modules such as "distribution" and "documentation" were removed since building distribution artifacts and documentation is already automated using Maven.
 
-The figure below presents the current project architecture and its modules are described in the next sub-sections.
+The figure below presents the current project architecture and its modules are described as follows.
 
 ![](/assets/modules.png)
 
-### CloudSim Plus API
-This is the main module that contains the framework API. It is the only independent module that is required to build simulation scenarios. Since such a module is available at [Maven Central](http://cloudsimplus.org/docs/maven.html), there is no need to manually download the source code to build simulations using the framework. This module can just be [added as a maven dependency to your own project](http://cloudsimplus.org#maven) and you are ready to start building your simulation scenarios.
+### Modules
+CloudSim Plus API is the main module that contains the framework API. It is the only independent module that is required to build simulation scenarios. Since such a module is available at [Maven Central](http://cloudsimplus.org/docs/maven.html), there is no need to manually download the source code to build simulations using the framework. This module can just be [added as a maven dependency to your own project](http://cloudsimplus.org#maven) and you are ready to start building your simulation scenarios.
 
-### CloudSim Plus Examples:
+CloudSim Plus Examples provides the original CloudSim examples, with refactored, better organized code and updated to use the CloudSim Plus API. It also includes new examples for CloudSim Plus exclusive features. 
 
-### CloudSim Plus Testbeds: 
+CloudSim Plus Testbeds modules provides some classes that implement simulation testbeds in a repeatable manner, allowing a researcher to collect valid scientific results, such as means and standard deviations, considering a specific confidence interval.
 
 ### CloudSim Plus Benchmarks: 
 
