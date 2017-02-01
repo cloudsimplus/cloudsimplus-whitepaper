@@ -44,7 +44,7 @@ CloudSim Plus Examples provides the original CloudSim examples, with refactored,
 
 CloudSim Plus Testbeds modules provides some classes that implement simulation testbeds in a repeatable manner, allowing a researcher to collect valid scientific results, such as means and standard deviations, considering a specific confidence interval. They serve as examples on how to create broader testbed experiments.
 
-The CloudSim Plus Benchmarks module is used just internally to measure the overhead of some CloudSim Plus features.
+CloudSim Plus Benchmarks module is used just internally to measure the overhead of some CloudSim Plus features.
 
 ## Exclusive Features
 
