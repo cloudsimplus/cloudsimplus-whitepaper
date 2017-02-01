@@ -9,11 +9,13 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 Inter
 
 Cloud Computing is an important technology that has leveraged innovation in different knowledge fields and economic sectors by providing distributed, scalable, manageable and fault-tolerant computing resources over the Internet. The large adopotion of Cloud computing services can be also explained by diverse reasons such as its pay-per-use charging model that enables cost reduction for customers, the rapid and automated allocation of resources that enable applications to quickly respond to bursts, and full-featured web and console interfaces that enable customers to configure hosted services easily.
 
-The advances brought by Cloud Computing are backup up by academy and industry research and have increasingly attracted new researchers. There are different issues to be addressed that makes Cloud to be an active research field, including SLA fulfillment,  optimal VM placement and migration, cost reduction, power efficiency, hotspot detection, load balance, fault tolerance, anomalies detection, security enforcement, traffic and latency reduction and so on.
+The advances brought by Cloud Computing are backup up by academy and industry research and have increasingly attracted new researchers. There are different issues to be addressed that makes Cloud to be an active research field, including SLA fulfillment, optimal VM placement and migration, cost reduction, power efficiency, hotspot detection, load balance, fault tolerance, anomalies detection, security enforcement, traffic and latency reduction and so on.
 
 Considering the complexity of a Cloud infrastructure and the need to model proposed solutions and evaluate them in a quick, cheap and repeatable way, using a controlled environment that makes it easy to monitor and collect metrics, computer-based simulation is largely used to carry out research in this field.
 
-Accordingly, in this article we present CloudSim Plus, a new, full-featured, re-designed, highly extensible and modern Java 8 framework to enable modeling and simulation of Cloud Computing infrastructure, services, underlying mechanisms and algorithms. It is an open source project available at [http://cloudsimplus.org](http://cloudsimplus.org) and [Maven Central](http://cloudsimplus.org/docs/maven.html).
+Accordingly, in this article we present CloudSim Plus, a new, full-featured, re-designed, highly extensible and modern Java 8 framework to enable modeling and simulation of Cloud Computing infrastructure, services, underlying mechanisms and algorithms. CloudSim Plus enable researchers to model and simulate different Cloud scenarios, by implementing them using Java. Such scenarios can be used to experiment existing and potential solutions for the issues mentioned above. 
+
+CloudSim Plus is an open source project available at [http://cloudsimplus.org](http://cloudsimplus.org) and [Maven Central](http://cloudsimplus.org/docs/maven.html).
 
 ## Overview
 
@@ -48,7 +50,7 @@ CloudSim Plus Benchmarks module is used just internally to measure the overhead 
 
 ## Exclusive Features
 
-CloudSim Plus is a full-featured simulation framework that has introduced long-waited and exclusive features.
+CloudSim Plus is a full-featured simulation framework that has introduced long-waited and exclusive features that are discussed below.
 
 1. It is far easier to use. A complete and easy-to-understand simulation scenario can be built in some few lines. Check the [Examples Section](#a-minimal-and-complete-simulation-example).
 2. [Vertical VM Scaling](/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/VerticalVmScalingExample.java) 
