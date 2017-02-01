@@ -52,7 +52,10 @@ CloudSim Plus Benchmarks module is used just internally to measure the overhead 
 
 CloudSim Plus is a full-featured simulation framework that has introduced long-waited and exclusive features that are discussed below.
 
+### Utilization easiness
+
 1. It is far easier to use. A complete and easy-to-understand simulation scenario can be built in some few lines. Check the [Examples Section](#a-minimal-and-complete-simulation-example).
+
 2. [Vertical VM Scaling](/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/VerticalVmScalingExample.java) 
    that performs on-demand up and down allocation of VM resources such as Ram, Bandwidth and PEs \(CPUs\).
 3. [Horizontal VM scaling](/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/LoadBalancerByHorizontalVmScalingExample.java), allowing dynamic creation of VMs according to an overload condition. Such a condition is defined by a predicate that can check different VM resources usage such as CPU, RAM or BW.
@@ -78,7 +81,7 @@ CloudSim Plus is a full-featured simulation framework that has introduced long-w
 
 ## Usage Examples
 
-## Current Issues
+## Current Issues (inherited from CloudSim)
 
 ## Conclusion and Future Work
 
