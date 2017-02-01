@@ -1,11 +1,12 @@
-# CloudSim Plus: A Modern Java 8 Framework for Modeling and Simulation of Cloud Computing Infrastructures and Services
+= CloudSim Plus: A Modern Java 8 Framework for Modeling and Simulation of Cloud Computing Infrastructures and Services
+By Manoel C. Silva Filho, Raysa L. Oliveira, Claudio C. Monteiro, Pedro R. M. Inácio and Mário M. Freire.
+:toc:
 
-_By _[_Manoel C. Silva Filho_](http://twitter.com/manoelcampos)_, _[_Raysa L. Oliveira_](http://twitter.com/raysaloliveira)_, Claudio C. Monteiro, Pedro R. M. Inácio and Mário M. Freire._
+image::https://licensebuttons.net/l/by-sa/4.0/88x31.png[]
+This work is licensed under a link::http://creativecommons.org/licenses/by-sa/4.0/[Creative Commons Attribution-ShareAlike 4.0 International License].
 
-![](https://licensebuttons.net/l/by-sa/4.0/88x31.png)  
-This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
 
-## Introduction
+== Introduction
 
 Cloud Computing is an important technology that has leveraged innovation in different knowledge fields and economic sectors by providing distributed, scalable, manageable and fault-tolerant computing resources over the Internet. The large adopotion of Cloud computing services can be also explained by diverse reasons such as its pay-per-use charging model that enables cost reduction for customers, the rapid and automated allocation of resources that enable applications to quickly respond to bursts, and full-featured web and console interfaces that enable customers to configure hosted services easily.
 
@@ -15,32 +16,32 @@ Considering the complexity of a Cloud infrastructure and the need to model propo
 
 Accordingly, in this article we present CloudSim Plus, a new, full-featured, re-designed, highly extensible and modern Java 8 framework to enable modeling and simulation of Cloud Computing infrastructure, services, underlying mechanisms and algorithms. CloudSim Plus enable researchers to model and simulate different Cloud scenarios, by implementing them using Java. Such scenarios can be used to experiment existing and potential solutions for the issues mentioned above. 
 
-CloudSim Plus is an open source project available at [http://cloudsimplus.org](http://cloudsimplus.org) and [Maven Central](http://cloudsimplus.org/docs/maven.html).
+CloudSim Plus is an open source project available at http://cloudsimplus.org[] and link::http://cloudsimplus.org/docs/maven.html[Maven Central].
 
-## Overview
+== Overview
 
-CloudSim Plus is a simulation framework based on CloudSim 3, that went through an extensive re-design and re-engineering process to provide an updated, modern, more accurate, highly extensible, easier-to-use and state-of-the-art framework aiming sustainable maintainability for long-term evolution. To achieve such goals, CloudSim Plus is founded on several software design and engineering metrics, principles and practices such as [Coupling](https://en.wikipedia.org/wiki/Coupling_(computer_programming)\), [Cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science)\), [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern), [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)\) and other ones like [Don't Repeat Yourself \(DRY\)](https://pt.wikipedia.org/wiki/Don't_repeat_yourself) and [KISS](https://en.wikipedia.org/wiki/KISS_principle).
+CloudSim Plus is a simulation framework based on CloudSim 3, that went through an extensive re-design and re-engineering process to provide an updated, modern, more accurate, highly extensible, easier-to-use and state-of-the-art framework aiming sustainable maintainability for long-term evolution. To achieve such goals, CloudSim Plus is founded on several software design and engineering metrics, principles and practices such as link::https://en.wikipedia.org/wiki/Coupling_(computer_programming)[Coupling], link::https://en.wikipedia.org/wiki/Cohesion_(computer_science)[Cohesion], link::https://en.wikipedia.org/wiki/Software_design_pattern[Design Patterns], link::https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)[SOLID principles] and other ones like link::https://pt.wikipedia.org/wiki/Don't_repeat_yourself[Don't Repeat Yourself (DRY)] and link::https://en.wikipedia.org/wiki/KISS_principle[KISS].
 
-## Philosophy and Motivation
+== Philosophy and Motivation
 
-[Software quality](https://en.wikipedia.org/wiki/Software_quality) has increasingly become essential for software industry, as can be seen by the number of current software design and development methodologies and processes such as [Domain-Driven Design \(DDD\)](https://en.wikipedia.org/wiki/Domain-driven_design), [Test-Driven Development \(TDD\)](https://en.wikipedia.org/wiki/Test-driven_development), [Behavior-Driven Development \(BDD\)](https://en.wikipedia.org/wiki/Behavior-driven_development), Clean Code Programming and many more. Different tools have been used to collect and monitor software quality metrics to try detecting issues as soon as possible, such as [Static Code Analysis](https://en.wikipedia.org/wiki/Static_program_analysis) and [Integration Testing](https://en.wikipedia.org/wiki/Integration_testing) in an automated [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) environment.
+link::https://en.wikipedia.org/wiki/Software_quality[Software quality] has increasingly become essential for software industry, as can be seen by the number of current software design and development methodologies and processes such as link::https://en.wikipedia.org/wiki/Domain-driven_design[Domain-Driven Design (DDD)], link::https://en.wikipedia.org/wiki/Test-driven_development[Test-Driven Development (TDD)], link::https://en.wikipedia.org/wiki/Behavior-driven_development[Behavior-Driven Development (BDD)], Clean Code Programming and many more. Different tools have been used to collect and monitor software quality metrics to try detecting issues as soon as possible, such as link::https://en.wikipedia.org/wiki/Static_program_analysis[Static Code Analysis] and link::https://en.wikipedia.org/wiki/Integration_testing[Integration Testing] in an automated link::https://en.wikipedia.org/wiki/Continuous_integration[Continuous Integration] environment.
 
-We understand that the same software quality pursued by the software industry must as well be pursued by academic projects to reduce [technical debt](https://en.wikipedia.org/wiki/Technical_debt) and avoid [software erosion](https://en.wikipedia.org/wiki/Software_rot), delivering industry-standard quality products.
+We understand that the same software quality pursued by the software industry must as well be pursued by academic projects to reduce link::https://en.wikipedia.org/wiki/Technical_debt[technical debt] and avoid link::https://en.wikipedia.org/wiki/Software_rot[software erosion], delivering industry-standard quality products.
 
-We are strong adepts of open source philosophy. We started by effectively contributing to CloudSim and we have a developer in the top position of contributors from 2015 to 2016, and [such a position holds up to 2017](https://github.com/Cloudslab/cloudsim/graphs/contributors?from=2015-03-18&to=2017-01-30). However, since CloudSim is not highly compliant with these software design and engineering principles, practices and philosophies and our team has different views of how the framework should evolve, we decided to start CloudSim Plus as an independent fork. We also believe that source code needs to be curated, without meaning that will restrict contributions, as it is successfully proved by important projects like the [Linux Kernel](https://github.com/torvalds/linux).
+We are strong adepts of open source philosophy. We started by effectively contributing to CloudSim and we have a developer in the top position of contributors from 2015 to 2016, and link::https://github.com/Cloudslab/cloudsim/graphs/contributors?from=2015-03-18&to=2017-01-30[such a position holds up to 2017]. However, since CloudSim is not highly compliant with these software design and engineering principles, practices and philosophies and our team has different views of how the framework should evolve, we decided to start CloudSim Plus as an independent fork. We also believe that source code needs to be curated, without meaning that will restrict contributions, as it is successfully proved by important projects like the link::https://github.com/torvalds/linux[Linux Kernel].
 
 Finally, enforcement of backward compatibility is a common concern in software development, mainly for public APIs such as those ones provided by a framework. However, such a concern slows down software evolution and we contrary understand that a cloud simulation framework is predominantly used for research purposes, even by industry. Cloud simulation scenarios are tightly coupled to a specific version of the simulation framework and after they produces the final results and the research goes on, new scenarios can be built using an updated version of the framework, without worrying about the older scenario. Accordingly, we are not afraid of breaking compatibility so that we can foster project advances.
 
-## Architecture
+== Architecture
 
 CloudSim Plus is a Java Maven project that has a simpler and better module and package structures. The entire project is compounded of 4 modules that were re-organized to directly inherit from the parent project, allowing a researcher to quickly have an overview of the structure. Redundant and out-of-date modules such as "distribution" and "documentation" were removed since building distribution artifacts and documentation is already automated using Maven.
 
 The figure below presents the current project architecture and its modules are described as follows. The highlighted modules are new in CloudSim Plus.
 
-![](/assets/modules.png)
+image::images/modules.png[]
 
-### Modules
-CloudSim Plus API is the main module that contains the framework API. It is the only independent module that is required to build simulation scenarios. Since such a module is available at [Maven Central](http://cloudsimplus.org/docs/maven.html), there is no need to manually download the source code to build simulations using the framework. This module can just be [added as a maven dependency to your own project](http://cloudsimplus.org#maven) and you are ready to start building your simulation scenarios.
+=== Modules
+CloudSim Plus API is the main module that contains the framework API. It is the only independent module that is required to build simulation scenarios. Since such a module is available at link::http://cloudsimplus.org/docs/maven.html[Maven Central], there is no need to manually download the source code to build simulations using the framework. This module can just be link::http://cloudsimplus.org#maven[added as a maven dependency to your own project] and you are ready to start building your simulation scenarios.
 
 CloudSim Plus Examples provides the original CloudSim examples, with refactored, better organized code and updated to use the CloudSim Plus API. It also includes new examples for CloudSim Plus exclusive features. 
 
@@ -48,11 +49,11 @@ CloudSim Plus Testbeds modules provides some classes that implement simulation t
 
 CloudSim Plus Benchmarks module is used just internally to measure the overhead of some CloudSim Plus features.
 
-## Exclusive Features
+== Exclusive Features
 
 CloudSim Plus is a full-featured simulation framework that has introduced long-waited and exclusive features that are discussed below.
 
-### Utilization easiness
+=== Utilization easiness
 
 1. It is far easier to use. A complete and easy-to-understand simulation scenario can be built in some few lines. Check the [Examples Section](#a-minimal-and-complete-simulation-example).
 
@@ -79,13 +80,13 @@ CloudSim Plus is a full-featured simulation framework that has introduced long-w
 18. Integration Tests to increase framework accuracy by testing entire simulation scenarios.
 19. Updated to Java 8, making extensive use of [Lambda Expressions](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html) and [Streams API](http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html) to improve efficiency and provide a cleaner and easier-to-maintain code.
 
-## Usage Examples
+== Usage Examples
 
-## Current Issues (inherited from CloudSim)
+== Current Issues (inherited from CloudSim)
 
-## Conclusion and Future Work
+== Conclusion and Future Work
 
-## Acknowledge
+== Acknowledge
 
 * CAPES, FCT, IT, UBI, EU/Brazil Cloud Forum.
 
