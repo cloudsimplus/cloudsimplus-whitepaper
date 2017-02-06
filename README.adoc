@@ -61,7 +61,7 @@ Instances of a Datacenter should be created that will represent the different da
 
 For each Datacenter, a set of Hosts must be created, that represent the physical machines with actual computing power. Each Host must have a `VmScheduler` that defines the scheduling algorithm used by the Host to execute its VMs, existing 2 schedulers available. The `VmSchedulerTimeShared` enables executing VMs inside a Host in a preemptive, time-shared way, allowing different VMs to share CPU time when there are less CPUs than required by all VMs. The `VmSchedulerSpaceShared` is a non-preemptive scheduler that allocates physical CPUs to be exclusively used by each VM. If the current VMs require more CPUs than there are available, some VMs will not be allowed to be created.
 
-For each Host, `ResourceProvisioners` objects must be set. They define the policy used by a Host to check whether is an specific amount of resource available for a requesting VM and to allocate that resource for such the VM is created. A `ResourceProvisioner` must be defined to manage the allocation of RAM, bandwidth and CPU from the Hosto to virtual machines.
+For each Host, `ResourceProvisioners` objects must be set. They define the policy used by a Host to check whether is an specific amount of resource available for a requesting VM and to allocate that resource for such the VM is created. A `ResourceProvisioner` must be defined to manage the allocation of RAM, bandwidth and CPU (Processor Element, `Pe`) from the Host to virtual machines.
 
 - Network/Power Datacenter and Host
 
@@ -121,9 +121,23 @@ Depending on the model of an application running inside a VM, by just performing
 This feature allows a researcher to implement and evaluate load balancing algorithms for dynamic workloads and burst conditions, by enabling the creation of new VMs to attend the demand. Some cloud platforms such as Amazon Web Services provide an https://aws.amazon.com/autoscaling/:[Auto Scaling] feature, that can be similarly simulated in CloudSim Plus.
 
 === Parallel execution of simulations
-Allows several simulations to be run simultaneously, in a isolated way, inside a multi-core computer.
+Production of scientifically valid simulation results depends on several factors that include the accuracy of the simulator, experiments reproducibility and collection of statistic metrics over several simulation runs. Although CloudSim Plus provides a lighweight, fast and easy way to model and run cloud simulation experiments, depending on the experiment scale it may take several minutes to run, mainly when the workload is created from real and large datacenter traces. Several runs of such experiments can take even hours to finish. 
+
+CloudSim Plus was re-designed to enable running multiple experiments in parallel in a multi-core machine, to reduce the time spent in running simulations. Such a feature was enabled by changin all simulation state that was being managed in a static way, inside the `CloudSim` class, to be managed by instances of such a class. The benefits of this approach are two-fold: to initilize the simiulation, one has just to instantiate a `CloudSim` object, instead of calling a start method with lots of redundant parameters; each `CloudSim` instance owns all the objects that belongs to the simulation it manages, allowing that each simulation run independently in an isolated-way.
+
+The real reduction that can be got by running simulations in parallel is tightly dependent of the simiulation scenario and scale. If the simulation is CPU-bound and is compound of several runs, then the parallelization will provide great time reduction. On the other hand, small scale simulations or I/O-bound ones may not take advantage of this feature.
+
+The https://github.com/manoelcampos/cloudsim-plus/blob/master/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/ParallelSimulationsExample.java:[example available here] shows how it is simple and straightforward to parallelize simulation experiments in CloudSim Plus using the http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html:[Java 8 Stream API].
+
+Consider there is a class called `ParallelSimulationsExample` that represents a simulation scenario and contains a method `run` to start build and start a simulation, and then a List of instances of such a scenario with possible different configurations and/or generating random data using different seeds. Running each scenario instance is as simple as calling the single line of code below:
+
+[source,java]
+----
+include::../../projetos/cloudsim-plus/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/ParallelSimulationsExample.java[tags="parallelExecution",indent=0]
+----
 
 === Listeners
+
 Listeners objects to enable simulation monitoring.
 
 === Builders
@@ -145,13 +159,12 @@ framework that creates relationships among classes and allows chained calls such
 (/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/LinuxCompletelyFairSchedulerExample.java) used in recent version of the Linux Kernel.
 
 === Completely re-designed and reusable Network module. Totally refactored network examples to make them clear and easy to change 
-\(see issue \#49\).
 
 === Throughout documentation update, improvement and extension.
 
 === Improved class hierarchy, modules and package structure that is easier to understand and follows the Separation of Concerns principle \(SoC\).
 
-=== As it is usual to extend framework classes to provide some specific behaviours for your simulations, you will find a totally refactored code that follows clean code programming, [SOLID](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)\), [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern) and several other software engineering principles and practices. By this way, it will be far easier to understand the code and implement the feature you want.
+=== As it is usual to extend framework classes to provide some specific behaviours for your simulations, you will find a totally refactored code that follows clean code programming, [SOLID](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design), [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern) and several other software engineering principles and practices. By this way, it will be far easier to understand the code and implement the feature you want.
 
 === Integration Tests to increase framework accuracy by testing entire simulation scenarios.
 
