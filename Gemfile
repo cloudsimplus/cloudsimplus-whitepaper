@@ -3,7 +3,7 @@
 
 source 'https://rubygems.org'
 gem 'asciidoctor' 
-gem 'asciidoctor-pdf', '~> 1.5.0.alpha.13'
+gem 'asciidoctor-pdf'
 
 #Sintax highlight plugin. It requires the following line at the top of you asciidoc file
 # :source-highlighter: coderay
