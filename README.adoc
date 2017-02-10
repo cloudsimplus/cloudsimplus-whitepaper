@@ -1,15 +1,16 @@
 = CloudSim Plus: A Modern Java 8 Framework for Modeling and Simulation of Cloud Computing Infrastructures and Services
 Manoel C. Silva_Filho <http://twitter.com/manoelcampos>; Raysa L. Oliveira <https://twitter.com/raysaloliveira>; Claudio C. Monteiro; Pedro_R. M. Inácio; Mário M. Freire.
-:source-highlighter: coderay
-:toc:
-:imagesdir: images
 :homepage: http://cloudsimplus.org
+:source-highlighter: coderay
+:imagesdir: images
+:src: ../../projects/cloudsim-plus
+:toc:
 
 image::https://licensebuttons.net/l/by-sa/4.0/88x31.png[]
 This work is licensed under a http://creativecommons.org/licenses/by-sa/4.0/[Creative Commons Attribution-ShareAlike 4.0 International License].
 
 == Introduction
-Cloud Computing is an important technology that has leveraged innovation in different knowledge fields and economic sectors by providing distributed, scalable, manageable and fault-tolerant computing resources over the Internet. The large adopotion of Cloud computing services can be also explained by diverse reasons such as its pay-per-use charging model that enables cost reduction for customers, the rapid and automated allocation of resources that enable applications to quickly respond to bursts, and full-featured web and console interfaces that enable customers to configure hosted services easily.
+Cloud Computing is an important technology that has leveraged innovation in different knowledge fields and economic sectors by providing distributed, scalable, manageable and fault-tolerant computing resources over the Internet. The large adoption of Cloud computing services can be also explained by diverse reasons such as its pay-per-use charging model that enables cost reduction for customers, the rapid and automated allocation of resources that enable applications to quickly respond to bursts, and full-featured web and console interfaces that enable customers to configure hosted services easily.
 
 The advances brought by Cloud Computing are backup up by academy and industry research and have increasingly attracted new researchers. There are different issues to be addressed that makes Cloud to be an active research field, including SLA fulfillment, optimal VM placement and migration, cost reduction, power efficiency, hotspot detection, load balance, fault tolerance, anomalies detection, security enforcement, traffic and latency reduction and so on.
 
@@ -47,17 +48,24 @@ CloudSim Plus Testbeds modules provides some classes that implement simulation t
 
 CloudSim Plus Benchmarks module is used just internally to measure the overhead of some CloudSim Plus features. The interfaces are organized, from top to bottom, in the order required to create the objects that will represent the simulation scenario, including infrastructure, virtual machines and applications.
 
+=== Package Structure
+CloudSim Plus has a re-designed package organization, which ensures better https://en.wikipedia.org/wiki/Separation_of_concerns:[separation of concerns] and make it easier to understand the project structure and to locate some class to use, extend or simply to analyse its source code and/or documentation. Packages with a strong color contain exclusive CloudSim Plus classes and interfaces, while the lightly colored ones were introduced to improve organization but usually just contain classes and interfaces from CloudSim. The white packages already existed in CloudSim.
+
+image::package-structure-reduced-cloudforum.png[title="CloudSim Plus Simplified Package Diagram"]
+
+CloudSim Plus also introduce documentation for every package, quickly explaining the goals of containing classes and interfaces, as well as the main class inside the package. Such a documentation is an excellent start point for researchers to get an overview of the framework.
+
 === How CloudSim Plus works
 Creating a cloud simulation using CloudSim Plus requires one to write a Java program to model the simulation scenario. The simplified diagram below presents the main interfaces involved in creating such scenarios. For every presented interface, there is one or more implementing classes that have to be actually instantiated.
 
-image::reduced-main-classes.png[title="CloudSim Plus Simplified Class Diagram"]
+image::reduced-main-classes-cloudforum.png[title="CloudSim Plus Simplified Class Diagram"]
 
 The process of building a simulation scenario is described below. To see more details on how to use CloudSim Plus, please check the http://cloudsimplus.org/#how-to-use-cloudsim-plus:[How to use CloudSim Plus] section at the official website. A http://cloudsimplus.org/#a-minimal-and-complete-simulation-example:[minimal and complete simulation example] is available there too. 
 
 The `CloudSim` class is the first one that needs to be instantiated to start building a cloud simulation. CloudSim Plus just requires it to be instantiated using the default, no-arguments constructor, to initialize the simulation. The next steps are described as follows.
 
 ==== Datacenter
-Instances of a Datacenter should be created that will represent the different datacenters that compound the cloud infrastructure. Each Datacenter has a set of characteristics (such as its timezone and costs for charging customers) defined by a DatacenterCharacteristics object. It also must have a VmAllocationPolicy that defines the policy used to select a Host to place or migrate VMs.
+Instances of a `Datacenter` should be created that will represent the different data centers that compound the cloud infrastructure. Each `Datacenter` has a set of characteristics (such as its timezone and costs for charging customers) defined by a `DatacenterCharacteristics` object. It also must have a VmAllocationPolicy that defines the policy used to select a Host to place or migrate VMs.
 
 For each Datacenter, a set of Hosts must be created, that represent the physical machines with actual computing power. Each Host must have a `VmScheduler` that defines the scheduling algorithm used by the Host to execute its VMs, existing 2 schedulers available. The `VmSchedulerTimeShared` enables executing VMs inside a Host in a preemptive, time-shared way, allowing different VMs to share CPU time when there are less CPUs than required by all VMs. The `VmSchedulerSpaceShared` is a non-preemptive scheduler that allocates physical CPUs to be exclusively used by each VM. If the current VMs require more CPUs than there are available, some VMs will not be allowed to be created.
 
@@ -66,14 +74,14 @@ For each Host, `ResourceProvisioners` objects must be set. They define the polic
 ==== DatacenterBroker 
 A Datacenter Broker is a software that receives requests from a cloud customer and is in charge to take required actions on behalf of the customer to attend such requests. Such requests usually are the creation and destruction of VMs and allocation of applications (called Cloudlets) inside some VM. The broker is accountable for some decision making, such as selecting a Datacenter and then a Host inside it to place each VM and mapping each Cloudlet to one of the available Vms. The instantiation of `DatacenterBrokers` is the next step, before creating and submitting VMs and Cloudlets to the cloud infrastructure.
 
-The `DatacenterBrokerSimple` implementation always select the first Datacenter to place submitted Vms, before trying other Datacenters when the allocation of a Vm fails in such a Datacenter. It provides a https://en.wikipedia.org/wiki/Round-robin_scheduling:[Round-robin] policy to select a Vm to run each Cloudlet, without assessing Cloudlet requirements or provider and customer goals.
+The `DatacenterBrokerSimple` implementation always select the first Datacenter to place submitted Vms, before trying other `Datacenters` when the allocation of a Vm fails in such a Datacenter. It provides a https://en.wikipedia.org/wiki/Round-robin_scheduling:[Round-robin] policy to select a Vm to run each Cloudlet, without assessing Cloudlet requirements or provider and customer goals.
 
-CloudSim Plus enable the `DatacenterBrokerSimple` enabling that such behaviours to be changed in runtime, allowing a researcher to define the policies to place Vms and map Cloudlets to Vms, according to desired goals, without requiring the creation of a new `DatacenterBroker`. More details are discussed in the next section. 
+CloudSim Plus enable the `DatacenterBrokerSimple` enabling that such behaviors to be changed in runtime, allowing a researcher to define the policies to place Vms and map Cloudlets to Vms, according to desired goals, without requiring the creation of a new `DatacenterBroker`. More details are discussed in the next section. 
 
 ==== Vm
 A `Vm` is a Virtual Machine that belongs to a specific cloud customer, that a `DatacenterBroker` acts on behalf of. It abstractly represents a Virtual Machine in terms of RAM, CPU, Storage and Bandwidth requirements. For each Vm, a `CloudletScheduler` must be set to define the scheduling policy to be used to run the applications inside the `Vm`. Beyond time- and space-shared schedulers, that work as the VmSchedulers used by Hosts, CloudSim Plus provides a implementation of the https://en.wikipedia.org/wiki/Completely_Fair_Scheduler:[Completely Fair Scheduler] used in recent Linux Kernels.
 
-Vms must be created and submitted to the broker that will decide in which Datacenter and Host each Vm will be placed. When a Vm is submitted, try broker tries request a selected Datacenter to create the VM. If the Datacenter does not have a Host with enough capacity for a Vm, the broker then forwards the request to other Datacenters, until the Vm is created or all Datacenters are requested. 
+Vms must be created and submitted to the broker that will decide in which Datacenter and Host each Vm will be placed. When a Vm is submitted, try broker tries request a selected Datacenter to create the VM. If the Datacenter does not have a Host with enough capacity for a Vm, the broker then forwards the request to other `Datacenters`, until the Vm is created or all `Datacenters` are requested. 
 
 ==== Cloudlet 
 A `Cloudlet` abstractly represents an application running inside a Vm. Cloudlets and its related interfaces such as the `UtilizationModel` are used to define application models. A Cloudlet must define some resource requirements in advance, currently only CPU and storage. Such requirements can be used by a broker to decide how to map Cloudlets to VMs in order to attend such requirements and achieve provider and customer goals. 
@@ -92,7 +100,7 @@ CloudSim Plus allows on-demand creation of VMs and Cloudlets, without requiring 
 It also enables delaying the creation of submitted Cloudlets for simulation of dynamic arrival of tasks.
 
 === VM Scaling
-VM migration is a well-known mechanism used to optimize allocation of physical resources, that can be applied for different goals such as reduction of costs, energy consumption and resource wastage by consolidating multiple VMs into the same Host, reduction of network traffic by placing inter-communication VMs as close as possible, reduction of SLA violations by ensuring that the required resources will be available for hosted VMs, etc. It is a fundamental mechamism to provide the so caled elasticity, that enables resources to be on-demand allocated or released.
+VM migration is a well-known mechanism used to optimize allocation of physical resources, that can be applied for different goals such as reduction of costs, energy consumption and resource wastage by consolidating multiple VMs into the same Host, reduction of network traffic by placing inter-communication VMs as close as possible, reduction of SLA violations by ensuring that the required resources will be available for hosted VMs, etc. It is a fundamental mechanism to provide the so called elasticity, that enables resources to be on-demand allocated or released.
 
 However, VM migration is an expensive operation that causes service downtime, introduces overhead and must be performed carefully. Sometimes VM migrations can be avoided by simply scaling under or overloaded VMs. CloudSim Plus provides vertical and horizontal VM scaling mechanisms. 
 
@@ -105,7 +113,7 @@ Vertical VM Scaling performs on-demand down or up allocation of VM resources suc
 
 Bandwidth scaling is simpler to be performed since it is a more abstract resource, different from virtualized RAM and CPU that are linked to the physical corresponding resource from a physical machine. By this way, such a scaling can be easily performed in routers and CloudSim Plus simulate such a scaling mechanism.
 
-Using Vertical VM Scaling feature it is possible to accomodate rising demand of applications running inside a VM, without migrating the VM or creating another ones. Such a CloudSim Plus feature enables performing simulations to assess, for instance, what is the workload limit that a VM supports, for a given application model, before requiring the creation of new VMs to balance the load, that is discussed in the next sub-section. 
+Using Vertical VM Scaling feature it is possible to accommodate rising demand of applications running inside a VM, without migrating the VM or creating another ones. Such a CloudSim Plus feature enables performing simulations to assess, for instance, what is the workload limit that a VM supports, for a given application model, before requiring the creation of new VMs to balance the load, that is discussed in the next sub-section. 
 
 ==== Horizontal VM Scaling
 Horizontal VM Scaling allows the dynamic destruction or creation of VMs, according to an under or overload condition, respectively. Such conditions are defined by a https://en.wikipedia.org/wiki/Predicate_(mathematical_logic):[predicate] that can check different VM resources usage such as CPU, RAM or Bandwidth, to define if a VM is under or overloaded.
@@ -115,11 +123,11 @@ Depending on the model of an application running inside a VM, by just performing
 This feature allows a researcher to implement and evaluate load balancing algorithms for dynamic workloads and burst conditions, by enabling the creation of new VMs to attend the demand. Some cloud platforms such as Amazon Web Services provide an https://aws.amazon.com/autoscaling/:[Auto Scaling] feature, that can be alike simulated in CloudSim Plus.
 
 === Parallel execution of simulations
-Production of scientifically valid simulation results depends on several factors that include the accuracy of the simulator, experiments reproducibility and collection of statistic metrics over several simulation runs. Although CloudSim Plus provides a lighweight, fast and easy way to model and run cloud simulation experiments, depending on the experiment scale it may take several minutes to run, mainly when the workload is created from real and large datacenter traces. Several runs of such experiments can take even hours to finish. 
+Production of scientifically valid simulation results depends on several factors that include the accuracy of the simulator, experiments reproducibility and collection of statistic metrics over several simulation runs. Although CloudSim Plus provides a lightweight, fast and easy way to model and run cloud simulation experiments, depending on the experiment scale it may take several minutes to run, mainly when the workload is created from real and large datacenter traces. Several runs of such experiments can take even hours to finish. 
 
-CloudSim Plus was re-designed to enable running multiple experiments in parallel in a multi-core machine, to reduce the time spent in running simulations. Such a feature was enabled by changin all simulation state that was being managed in a static way, inside the `CloudSim` class, to be managed by instances of such a class. The benefits of this approach are two-fold: to initilize the simiulation, one has just to instantiate a `CloudSim` object, instead of calling a start method with lots of redundant parameters; each `CloudSim` instance owns all the objects that belongs to the simulation it manages, allowing that each simulation run independently in an isolated-way.
+CloudSim Plus was re-designed to enable running multiple experiments in parallel in a multi-core machine, to reduce the time spent in running simulations. Such a feature was enabled by changing all simulation state that was being managed in a static way, inside the `CloudSim` class, to be managed by instances of such a class. The benefits of this approach are two-fold: to initialize the simulation, one has just to instantiate a `CloudSim` object, instead of calling a start method with lots of redundant parameters; each `CloudSim` instance owns all the objects that belongs to the simulation it manages, allowing that each simulation run independently in an isolated-way.
 
-The real reduction that can be got by running simulations in parallel is tightly dependent of the simiulation scenario and scale. If the simulation is CPU-bound and is compound of several runs, then the parallelization will provide great time reduction. On the other hand, small scale simulations or I/O-bound ones may not take advantage of this feature.
+The real reduction that can be got by running simulations in parallel is tightly dependent of the simulation scenario and scale. If the simulation is CPU-bound and is compound of several runs, then the parallelization will provide great time reduction. On the other hand, small scale simulations or I/O-bound ones may not take advantage of this feature.
 
 The https://github.com/manoelcampos/cloudsim-plus/blob/master/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/ParallelSimulationsExample.java:[example available here] shows how it is simple and straightforward to parallelize simulation experiments in CloudSim Plus using the http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html:[Java 8 Stream API].
 
@@ -127,49 +135,52 @@ Consider there is a class called `ParallelSimulationsExample` that represents a 
 
 [source,java]
 ----
-include::../../projetos/cloudsim-plus/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/ParallelSimulationsExample.java[tags="parallelExecution",indent=0]
+include::{src}/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/ParallelSimulationsExample.java[tags="parallelExecution",indent=0]
 ----
 
 Since `CloudSim` class was re-designed, it enables using the https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html:[Parallel Streams] feature of Java 8, which makes straightforward to execute simulations in parallel.
 
 === Listeners
 
-One of the features that must be provided by a cloud infrastructure is the ability to monitor running services. Monitoring capacibilites can be use by different parties. The cloud provider can collect resource utilization to charge customers in a pay-per-use basis, to assess fulfilment of customer SLA or to optimize resource allocation to avoid under and overprovisioning in order to reduce costs and energy consumption. Customers can use such monitoring features to assess if the kind of resources he/she has contracted is approporiate to its demand and then take the required actions they aren't. 
+One of the features that must be provided by a cloud infrastructure is the ability to monitor running services. Monitoring capabilities can be use by different parties. The cloud provider can collect resource utilization to charge customers in a pay-per-use basis, to assess fulfillment of customer SLA or to optimize resource allocation to avoid under and over provisioning in order to reduce costs and energy consumption. Customers can use such monitoring features to assess if the kind of resources he/she has contracted is appropriated to its demand and then take the required actions they aren't. 
 
 Despite the usage of cloud resources is charged in a pay-per-use basis, it is up to the customer to correctly configure the services he/she is using in order to ensure that expected quality of service he/she wants to provide for his/her final users is being achieved. Scaling mechanisms that provide the so called elasticity commonly must be enabled and configured by the customer, otherwise resources will not be scaled, for instance, to attend bursts. 
 
 Accordingly, CloudSim Plus provides Listeners as a mechanism to monitor simulation in runtime, allowing collection of metrics, resource allocation decision making (such as VM scaling) and granular simulation execution feedback. Since the final goal of a simulation is the collection of data to be processed, assessed and validated, Listeners enable researchers to collect such data in any time interval they want and writing it in any desired portable format such as CSV, JSon, XML, YML or any other.
 
-Despite CloudSim Plus is far easier to use and provides several new useful features, understanding and correcly implementing large scale simulation scenarios can be a hard task. Listeners can be used by researchers to follow up simulation execution and to collect data for debug purposes.
+Despite CloudSim Plus is far easier to use and provides several new useful features, understanding and correctly implementing large scale simulation scenarios can be a hard task. Listeners can be used by researchers to follow up simulation execution and to collect data for debug purposes.
 
 The Listeners are an implementation of the https://en.wikipedia.org/wiki/Observer_pattern:[Observer Design Pattern] and were implemented using the https://www.oreilly.com/learning/java-8-functional-interfaces:[Java 8 Functional Interfaces] that enable the use of Lambda Expressions to define the code that will capture some event, without requiring the use an anonymous classes for each event to be handled. This feature was designed to allow defining different handlers for the same event, enabling the use this feature internally by the framework itself as well as by the researcher building cloud simulations. 
 
 Some available listeners are presented below, grouped by the class they belong to:
 
 ==== Host Listeners
-These enable to get notifications about events happening inside a Host. Currently only the `onUpdateVmsProcessingListener` is defined, which enables receiving notifications when the execution progress of VMs inside the Host is updated. This Vm processing update is as if the Host operating system is allowing the execution of some more Vm CPU instructions, that will impact resource usage such as RAM, Bandwidth and obviously CPU too.
+Such Listeners enable getting notifications about events happening inside a Host. Currently only the `onUpdateProcessingListener` is defined, which enables receiving notifications when the execution progress of VMs inside the Host is updated. This Vm processing update is as if the Host operating system is allowing the execution of some more Vm CPU instructions, that will impact resource usage such as RAM, Bandwidth and obviously CPU too.
 
-Using such a Listener, a researcher can monitor, for instance, if a specific Vm placement configuration is enabling a balanced resource usage, i.e., whether resources are begin used in similar proportions. An inbalanced resource usage situation sets a resource wastage scenario and prevents new VMs to be placed at the Host, due to the unavailability of some resources, while other ones are plenty.
+Using such a Listener, a researcher can monitor, for instance, if a specific Vm placement configuration is enabling a balanced resource usage, i.e., whether resources are begin used in similar proportions along VMs execution. An unbalanced resource usage situation sets a resource wastage scenario and prevents new VMs to be placed at the Host, due to the unavailability of some resources, while other ones are plenty.
 
 ==== Vm Listeners
-- `onHostAllocationListener`:
-- `onHostDeallocationListener`:
-- `onUpdateProcessingListener`:
-- `onCreationFailureListener`:
+Such Listeners enable getting notifications about events happening inside a Vm and are presented below.
+
+- `onHostAllocationListener`: get notifications when a `Host` is allocated to a `Vm`, that is, when a `Vm` is placed inside some `Host`. Such a Listener can be used to log the different `Hosts` that a `Vm` is placed along its life cycle, since the `Vm` may be migrated to different `Hosts` when a `Host` becomes under or overloaded. It also enables to check in runtime if a specific `Vm` allocation policy is placing `Vms` at the expected `Hosts`. 
+- `onHostDeallocationListener`: this the opposite of the previous listener, being notified every time when a `Vm` is destroyed or moved from a `Host`. `Vms` must be created before applications (`Cloudlets`) are submitted to a broker. Sometimes applications finish running inside a `Vm` while it remains idle for long time periods, potentially avoid other `Vms` to be placed inside the `Host` because resources that could be used by new `Vms` are provisioned to this idle one. Using this Listener it is possible to determine the time difference when the `Vm` was destroyed and when it became idle. By this way, the broker policy that defines when `Vms` should be freed can be assessed to optimize resource allocation.
+- `onUpdateProcessingListener`: get notifications when the execution progress of a `Vm` is updated. This event is fired by the event of same name from the `Host` where the `Vm` is placed. In the same way, it can be used, for instance: to log `Vm` resource usage along its execution, enabling detection of under and overload conditions; to determine if such resources are balanced; to detect and log SLA violations. Such a Listener is also used internally by the Horizontal and Vertical Vm Scaling mechanisms, presented above, to verify if a `Vm` is under or overloaded for performing down or up scaling, respectively.
+- `onCreationFailureListener`: 
 
 ==== Cloudlet Listeners
+Such Listeners enable getting notifications about events happening inside a Cloudlet.
+
 - `onFinishListener`:
 - `onUpdateProcessingListener`:
 
 Such Listeners are currently being used to implement Integration Tests in order to assess the accuracy of the simulation framework. Examples using some Listeners can be found https://github.com/manoelcampos/cloudsim-plus/tree/master/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/listeners:[here].
 
 ==== CloudSim 
+Listeners inside the `CloudSim` class are the most general ones available in CloudSim Plus, that may have a broader applicability. The current implemented Listeners are described below:
 
-Listeners inside the `CloudSim` class are 
 - `onSimulationPausedListener`: 
 - `onClockTickListener`: 
 - `onEventProcessingListener`: notified every time that any event is processed by CloudSim Plus. It is a more general Listener that provides the original data related to the happened event, that is totally dependent of the kind of event. Since CloudSim Plus is a discrete event simulation framework, any event that happens will be caught by such Listeners. Since it is the most generic Listener available, it may have several different uses. 
-
 
 === Strongly object-oriented 
 The framework creates relationships among classes and allows chained calls such as `cloudlet.getVm().getHost().getDatacenter()`. You don't even have to worry about `NullPointerException` when making such a chained call because CloudSim Plus uses the https://en.wikipedia.org/wiki/Null_Object_pattern:[Null Object Design Pattern] to avoid that.
