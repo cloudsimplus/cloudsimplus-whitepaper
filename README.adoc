@@ -37,7 +37,7 @@ CloudSim Plus is a Java Maven project that has a simpler and better module and p
 
 The figure below presents the current project architecture and its modules are described as follows. The highlighted modules are new in CloudSim Plus.
 
-image::modules.png[title="CloudSim Plus Modules"]
+image::modules.png[title="CloudSim Plus Modules", scaledwidth="75%"]
 
 === Modules
 CloudSim Plus API is the main module that contains the framework API. It is the only independent module that is required to build simulation scenarios. Since such a module is available at http://cloudsimplus.org/docs/maven.html[Maven Central], there is no need to manually download the source code to build simulations using the framework. This module can just be http://cloudsimplus.org#maven[added as a maven dependency to your own project] and you are ready to start building your simulation scenarios.
@@ -51,14 +51,14 @@ CloudSim Plus Benchmarks module is used just internally to measure the overhead 
 === Package Structure
 CloudSim Plus has a re-designed package organization, which ensures better https://en.wikipedia.org/wiki/Separation_of_concerns:[separation of concerns] and make it easier to understand the project structure and to locate some class to use, extend or simply to analyse its source code and/or documentation. Packages with a strong color contain exclusive CloudSim Plus classes and interfaces, while the lightly colored ones were introduced to improve organization but usually just contain classes and interfaces from CloudSim. The white packages already existed in CloudSim.
 
-image::package-structure-reduced-cloudforum.png[title="CloudSim Plus Simplified Package Diagram"]
+image::package-structure-reduced-cloudforum.png[title="CloudSim Plus Simplified Package Diagram", scaledwidth="75%"]
 
 CloudSim Plus also introduce documentation for every package, quickly explaining the goals of containing classes and interfaces, as well as the main class inside the package. Such a documentation is an excellent start point for researchers to get an overview of the framework.
 
 === How CloudSim Plus works
 Creating a cloud simulation using CloudSim Plus requires one to write a Java program to model the simulation scenario. The simplified diagram below presents the main interfaces involved in creating such scenarios. For every presented interface, there is one or more implementing classes that have to be actually instantiated.
-
-image::reduced-main-classes-cloudforum.png[title="CloudSim Plus Simplified Class Diagram"]
+[[fig:class-diagram,Class Diagram]]
+image::reduced-main-classes-cloudforum.png[title="CloudSim Plus Simplified Class Diagram", scaledwidth="75%"]
 
 The process of building a simulation scenario is described below. To see more details on how to use CloudSim Plus, please check the http://cloudsimplus.org/#how-to-use-cloudsim-plus:[How to use CloudSim Plus] section at the official website. A http://cloudsimplus.org/#a-minimal-and-complete-simulation-example:[minimal and complete simulation example] is available there too. 
 
@@ -74,7 +74,7 @@ For each Host, `ResourceProvisioners` objects must be set. They define the polic
 ==== DatacenterBroker 
 A Datacenter Broker is a software that receives requests from a cloud customer and is in charge to take required actions on behalf of the customer to attend such requests. Such requests usually are the creation and destruction of VMs and allocation of applications (called Cloudlets) inside some VM. The broker is accountable for some decision making, such as selecting a Datacenter and then a Host inside it to place each VM and mapping each Cloudlet to one of the available Vms. The instantiation of `DatacenterBrokers` is the next step, before creating and submitting VMs and Cloudlets to the cloud infrastructure.
 
-The `DatacenterBrokerSimple` implementation always select the first Datacenter to place submitted Vms, before trying other `Datacenters` when the allocation of a Vm fails in such a Datacenter. It provides a https://en.wikipedia.org/wiki/Round-robin_scheduling:[Round-robin] policy to select a Vm to run each Cloudlet, without assessing Cloudlet requirements or provider and customer goals.
+The `DatacenterBrokerSimple` class always selects the first Datacenter to place submitted Vms, before trying other `Datacenters` when the allocation of a Vm fails in such a Datacenter. It provides a https://en.wikipedia.org/wiki/Round-robin_scheduling:[Round-robin] policy to select a Vm to run each Cloudlet, without assessing Cloudlet requirements or provider and customer goals.
 
 CloudSim Plus enable the `DatacenterBrokerSimple` enabling that such behaviors to be changed in runtime, allowing a researcher to define the policies to place Vms and map Cloudlets to Vms, according to desired goals, without requiring the creation of a new `DatacenterBroker`. More details are discussed in the next section. 
 
@@ -123,7 +123,7 @@ Depending on the model of an application running inside a VM, by just performing
 This feature allows a researcher to implement and evaluate load balancing algorithms for dynamic workloads and burst conditions, by enabling the creation of new VMs to attend the demand. Some cloud platforms such as Amazon Web Services provide an https://aws.amazon.com/autoscaling/:[Auto Scaling] feature, that can be alike simulated in CloudSim Plus.
 
 === Parallel execution of simulations
-Production of scientifically valid simulation results depends on several factors that include the accuracy of the simulator, experiments reproducibility and collection of statistic metrics over several simulation runs. Although CloudSim Plus provides a lightweight, fast and easy way to model and run cloud simulation experiments, depending on the experiment scale it may take several minutes to run, mainly when the workload is created from real and large datacenter traces. Several runs of such experiments can take even hours to finish. 
+Production of scientifically valid simulation results depends on several factors that include the accuracy of the simulator, https://en.wikipedia.org/wiki/Reproducibility:[experiments reproducibility] and collection of statistic metrics over several simulation runs. Although CloudSim Plus provides a lightweight, fast and easy way to model and run cloud simulation experiments, depending on the experiment scale it may take several minutes to run, mainly when the workload is created from real and large datacenter traces. Several runs of such experiments can take even hours to finish. 
 
 CloudSim Plus was re-designed to enable running multiple experiments in parallel in a multi-core machine, to reduce the time spent in running simulations. Such a feature was enabled by changing all simulation state that was being managed in a static way, inside the `CloudSim` class, to be managed by instances of such a class. The benefits of this approach are two-fold: to initialize the simulation, one has just to instantiate a `CloudSim` object, instead of calling a start method with lots of redundant parameters; each `CloudSim` instance owns all the objects that belongs to the simulation it manages, allowing that each simulation run independently in an isolated-way.
 
@@ -175,13 +175,14 @@ Such Listeners enable getting notifications about events happening inside a `Clo
 Listeners inside the `CloudSim` class are the most general ones available in CloudSim Plus, that may have a broader applicability. The current implemented Listeners are described below:
 
 - `onClockTickListener`: get notifications when the simulation clock advances, enabling to perform any desired action at a given time. Since CloudSim Plus allows dynamic creation of `Cloudlets` and `Vms`, as presented before, such a Listener can be used to submit new instances of those objects to a `DatacenterBroker`, simulating the dynamic arrival of customers requests and workload generated by final users.
-- `onSimulationPausedListener`: get notifications when the simulation is paused. Such a Listener can be used, for instance, to collect partial simulation data after the simulation is intentionally paused at a given time. Scientifically valid simulation results depend on, among other factors, statistical data obtained from multiple simulation runs. Presentation of such results should take into account a defined confidence interval that shows with a percentage of confidence, the standard deviation in which the results rely on. One of the methods to reduce the confidence interval is the replication method, in which the simulation is reproduced several times using different seeds. Using this method, reducing the confidence interval by half requires to quadruple the number of simulation runs. Other methods such as the regeneration process is one of those that enables reducing such a interval when it is realized that at some point in time, some studied random variable returns to its initial state. Pausing the simulation at this point enables collecting the required data when such an event happens.
+- `onSimulationPausedListener`: get notifications when the simulation is paused. Such a Listener can be used, for instance, to collect partial simulation data after the simulation is intentionally paused at a given time. Scientifically valid simulation results depend on, among other factors, statistical data obtained from multiple simulation runs. When presenting such results one should consider a defined confidence interval that shows with a percentage of confidence, the standard deviation in which the results rely on. One of the methods to reduce the confidence interval is the https://en.wikipedia.org/wiki/Replication_(statistics):[replication method], in which the simulation is reproduced several times using different seeds. Using this method, to reduce the confidence interval by half requires to quadruple the number of simulation runs. Other methods such as the https://en.wikipedia.org/wiki/Regenerative_process:[regeneration process] is one of those that enables reducing such an interval, when it is realized that at some point in time, some studied random variable returns to its initial state. Pausing the simulation at this point enables collecting the required data when such an event happens.
 - `onEventProcessingListener`: get notifications when any event is processed by CloudSim Plus. It is a more general Listener that provides the original data related to the happened event, that is totally dependent of the kind of event. Since CloudSim Plus is a discrete event simulation framework, any event that happens will be caught by such Listeners. Since it is the most generic Listener available, it may have several different uses. 
 
-=== Strongly object-oriented 
-The framework creates relationships among classes and allows chained calls such as `cloudlet.getVm().getHost().getDatacenter()`. You don't even have to worry about `NullPointerException` when making such a chained call because CloudSim Plus uses the https://en.wikipedia.org/wiki/Null_Object_pattern:[Null Object Design Pattern] to avoid that.
+=== Strongly object-oriented framework
+CloudSim Plus was comprehensive re-engineered to create relationships among classes, enabling chained calls such as `cloudlet.getVm().getHost().getDatacenter()`. As the presented <<fig:class-diagram>> shows, an object,such as a `Cloudlet`, defines relationships to keep a reference to each object it is related to. Accordingly, the line of code presented above provides a direct way to know what `Vm` a `Cloudlet` is running or will run, what `Host` such a `Vm` is placed into and finally what is the `Datacenter` where such a `Host` is settled down. The https://en.wikipedia.org/wiki/Null_Object_pattern:[Null Object Design Pattern] was also implemented to avoid the infamous `NullPointerException` when making such a chained call.
 
-=== Classes and interfaces to allow implementation of [heuristics]
+=== Classes and interfaces to allow implementation of heuristics
+
 http://en.wikipedia.org/wiki/Heuristic:[Heuristics] such as 
 http://en.wikipedia.org/wiki/Tabu_search:[Tabu Search], http://en.wikipedia.org/wiki/Simulated_annealing:[Simulated Annealing], http://en.wikipedia.org/wiki/Ant_colony_optimization_algorithms:[Ant Colony Systems] and so on. 
 
@@ -192,9 +193,9 @@ The https://en.wikipedia.org/wiki/Completely_Fair_Scheduler:[Completely Fair Sch
 
 === Throughout documentation update, improvement and extension.
 
-=== Improved class hierarchy, modules and package structure that is easier to understand and follows the Separation of Concerns principle \(SoC\).
+=== Improved class hierarchy, modules and package structure that is easier to understand and follows the Separation of Concerns principle (SoC).
 
-=== As it is usual to extend framework classes to provide some specific behaviours for your simulations, you will find a totally refactored code that follows clean code programming, 
+=== As it is usual to extend framework classes to provide some specific behaviors for your simulations, you will find a totally refactored code that follows clean code programming, 
 
 https://en.wikipedia.org/wiki/SOLID_(object-oriented_design):[SOLID], https://en.wikipedia.org/wiki/Software_design_pattern:[Design Patterns] and several other software engineering principles and practices. By this way, it will be far easier to understand the code and implement the feature you want.
 

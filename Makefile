@@ -1,5 +1,7 @@
 SOURCE=README.adoc
 TARGET=cloudsim-plus-article
+all: html pdf
+
 install:
 	#Install bundler, that in turn downloads Ruby dependencies inside the Gemfile: http://bundler.io
 	sudo gem install bundler
@@ -11,8 +13,6 @@ html:
 
 pdf:
 	asciidoctor-pdf -a allow-uri-read "$(SOURCE)" -o "$(TARGET).pdf"
-
-all: html pdf
 
 clean:
 	rm -f "$(TARGET).html" "$(TARGET).pdf"
