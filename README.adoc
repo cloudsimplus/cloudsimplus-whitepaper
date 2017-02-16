@@ -55,7 +55,8 @@ image::package-structure-reduced-cloudforum.png[title="CloudSim Plus Simplified 
 
 CloudSim Plus also introduce documentation for every package, quickly explaining the goals of containing classes and interfaces, as well as the main class inside the package. Such a documentation is an excellent start point for researchers to get an overview of the framework.
 
-=== How CloudSim Plus works
+[[sec:how-cloudsim-plus-works,How CloudSim Plus Works]]
+=== How CloudSim Plus Works
 Creating a cloud simulation using CloudSim Plus requires one to write a Java program to model the simulation scenario. The simplified diagram below presents the main interfaces involved in creating such scenarios. For every presented interface, there is one or more implementing classes that have to be actually instantiated.
 [[fig:class-diagram,Class Diagram]]
 image::reduced-main-classes-cloudforum.png[title="CloudSim Plus Simplified Class Diagram", scaledwidth="70%"]
@@ -190,7 +191,12 @@ http://en.wikipedia.org/wiki/Tabu_search:[Tabu Search], http://en.wikipedia.org/
 CloudSim Plus provides a set of classes and interfaces to enable a researcher to build such heuristics for solving problems such as Vm placement and migration. The interfaces provide a contract by defining methods signatures to implement the solution cost function (the fitness function is just the inverse of the cost), the solution generation function, number of maximum iterations, the probability for accepting each random solution and the predicate to define when the solution finding must stop. The package https://github.com/manoelcampos/cloudsim-plus/tree/master/cloudsim-plus/src/main/java/org/cloudsimplus/heuristics:[org.cloudsimplus.heuristics] contains such classes and interfaces and also includes a Simulated annealing heuristic to map a set of `Cloudlets` to a set of `Vms`.
 
 === Implementation of the Completely Fair Scheduler
-The https://en.wikipedia.org/wiki/Completely_Fair_Scheduler:[Completely Fair Scheduler] used in recent version of the Linux Kernel.
+Implementations of the `CloudletScheduler` interface, as presented in the Section <<sec:how-cloudsim-plus-works>>, define the algorithm used by a `Vm` to schedule the execution of its `Cloudlets`. One of the criticisms against simulation experiments is differences between some behaviors of the actual system begin simulated and the simulation itself, that may reduce the simulation accuracy. Process scheduling is one of the behaviors that was neglected in cloud computing simulations up to now. The scheduling algorithm impacts some application metrics such as wait time and task completion time. A bad scheduling may lead to tasks waiting for long time periods to use the CPU or, when it is assigned to a CPU, it is not given enough time slice to use it. That situation is called https://en.wikipedia.org/wiki/Starvation:[starvation] and may cause SLA violations. 
+
+The https://en.wikipedia.org/wiki/Completely_Fair_Scheduler:[Completely Fair Scheduler] used in recent version of the Linux Kernel provide a very efficient policy to avoid the mentioned issues. As an actual scheduler, it considers assigned tasks priorities to define the time slice that each process is allowed to use the CPU at a time. It also try to be fair when allocating these time slices in order to avoid starvation of low priority processes. Accordingly, CloudSim Plus introduces a implementation of the Completely Fair Scheduler to increase the accuracy of processes execution in simulation environments. 
+
+The already existing `CloudletSchedulerTimeShared` class provides a simplistic implementation that does not take processes priority into account and, in fact, it does not perform a https://en.wikipedia.org/wiki/Preemption_(computing):[preemption process] when there is more process to execute than the number of available CPUs. As an example, consider there are 3 CPU cores and 12 processes to be executed. Such a scheduler will make all these processes to be executed simultaneously, each one using 25% of a CPU core capacity (3 cores / 12 processes), enabling 4 processes to run in each core. Even in recent actual processors this is an impossible situation, since nowadays, technologies such as the http://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html:[Intel Hyper-Threading (HT)] just enables up to 2 processes running at the same time on each CPU core. In a real scheduler, if there is, for instance, 2 Hyper-Threading CPU cores allocated to 4 processes that are not using the entire cores capacity, a fourth process cannot use this remaining capacity that is in fact wasted, needing to wait one of the processes to be preempted to open room for it to use the CPU. Therefore, the simplistic `CloudletSchedulerTimeShared` can achieve better but inaccurate results.
+
 
 === Completely re-designed and reusable Network module. Totally refactored network examples to make them clear and easy to change 
 
@@ -207,8 +213,6 @@ https://en.wikipedia.org/wiki/SOLID_(object-oriented_design):[SOLID], https://en
 === Updated to Java 8, making extensive use of Lambda Expressions
 
 http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html:[Lambda Expressions] and http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html:[Streams API] to improve efficiency and provide a cleaner and easier-to-maintain code.
-
-== Current Issues
 
 == Conclusion and Future Work
 
