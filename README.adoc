@@ -197,24 +197,17 @@ The https://en.wikipedia.org/wiki/Completely_Fair_Scheduler:[Completely Fair Sch
 
 The already existing `CloudletSchedulerTimeShared` class provides a simplistic implementation that does not take processes priority into account and, in fact, it does not perform a https://en.wikipedia.org/wiki/Preemption_(computing):[preemption process] when there is more process to execute than the number of available CPUs. As an example, consider there are 3 CPU cores and 12 processes to be executed. Such a scheduler will make all these processes to be executed simultaneously, each one using 25% of a CPU core capacity (3 cores / 12 processes), enabling 4 processes to run in each core. Even in recent actual processors this is an impossible situation, since nowadays, technologies such as the http://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html:[Intel Hyper-Threading (HT)] just enables up to 2 processes running at the same time on each CPU core. In a real scheduler, if there is, for instance, 2 Hyper-Threading CPU cores allocated to 4 processes that are not using the entire cores capacity, a fourth process cannot use this remaining capacity that is in fact wasted, needing to wait one of the processes to be preempted to open room for it to use the CPU. Therefore, the simplistic `CloudletSchedulerTimeShared` can achieve better but inaccurate results.
 
+=== Additional characteristics
+Besides all the exclusive features that have been presented, CloudSim Plus additional characteristics that make it a promising cloud simulation framework. Some of them include:
 
-=== Completely re-designed and reusable Network module. Totally refactored network examples to make them clear and easy to change 
+- Completely re-designed and reusable Network module. Totally refactored network examples to make them clear and easy to change.
+- Throughout documentation update, improvement and extension.
+- Improved class hierarchy, modules and package structure that is easier to understand and follows the https://en.wikipedia.org/wiki/Separation_of_concerns:[Separation of Concerns principle (SoC)]. For instance, power-aware Host classes and interfaces are included into the intuitive https://github.com/manoelcampos/cloudsim-plus/tree/master/cloudsim-plus/src/main/java/org/cloudbus/cloudsim/hosts/power:[org.cloudbus.cloudsim.hosts.power] package, as well as network-enabled ones are included into the https://github.com/manoelcampos/cloudsim-plus/tree/master/cloudsim-plus/src/main/java/org/cloudbus/cloudsim/hosts/network:[org.cloudbus.cloudsim.hosts.network] package. And if you need to find a power or network-enabled Vm, you will intuitively know where to find it.
+- As it is usual to extend framework classes to provide some specific behaviors, a researcher will find a totally refactored code that follows clean code programming, https://en.wikipedia.org/wiki/SOLID_(object-oriented_design):[SOLID], https://en.wikipedia.org/wiki/Software_design_pattern:[Design Patterns] and several other software engineering principles and practices. By this way, it will be far easier to understand the code and implement the required feature.
+- Integration Tests to increase framework accuracy by testing entire simulation scenarios.
+- Updated to Java 8, making extensive use of http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html:[Lambda Expressions] and http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html:[Streams API] to improve efficiency and provide a cleaner and easier-to-maintain code.
 
-=== Throughout documentation update, improvement and extension.
-
-=== Improved class hierarchy, modules and package structure that is easier to understand and follows the Separation of Concerns principle (SoC).
-
-=== As it is usual to extend framework classes to provide some specific behaviors for your simulations, you will find a totally refactored code that follows clean code programming, 
-
-https://en.wikipedia.org/wiki/SOLID_(object-oriented_design):[SOLID], https://en.wikipedia.org/wiki/Software_design_pattern:[Design Patterns] and several other software engineering principles and practices. By this way, it will be far easier to understand the code and implement the feature you want.
-
-=== Integration Tests to increase framework accuracy by testing entire simulation scenarios.
-
-=== Updated to Java 8, making extensive use of Lambda Expressions
-
-http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html:[Lambda Expressions] and http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html:[Streams API] to improve efficiency and provide a cleaner and easier-to-maintain code.
-
-== Conclusion and Future Work
+== Conclusion
 
 == Acknowledge
 
