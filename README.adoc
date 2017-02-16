@@ -37,7 +37,7 @@ CloudSim Plus is a Java Maven project that has a simpler and better module and p
 
 The figure below presents the current project architecture and its modules are described as follows. The highlighted modules are new in CloudSim Plus.
 
-image::modules.png[title="CloudSim Plus Modules", scaledwidth="75%"]
+image::modules.png[title="CloudSim Plus Modules", scaledwidth="70%"]
 
 === Modules
 CloudSim Plus API is the main module that contains the framework API. It is the only independent module that is required to build simulation scenarios. Since such a module is available at http://cloudsimplus.org/docs/maven.html[Maven Central], there is no need to manually download the source code to build simulations using the framework. This module can just be http://cloudsimplus.org#maven[added as a maven dependency to your own project] and you are ready to start building your simulation scenarios.
@@ -51,14 +51,14 @@ CloudSim Plus Benchmarks module is used just internally to measure the overhead 
 === Package Structure
 CloudSim Plus has a re-designed package organization, which ensures better https://en.wikipedia.org/wiki/Separation_of_concerns:[separation of concerns] and make it easier to understand the project structure and to locate some class to use, extend or simply to analyse its source code and/or documentation. Packages with a strong color contain exclusive CloudSim Plus classes and interfaces, while the lightly colored ones were introduced to improve organization but usually just contain classes and interfaces from CloudSim. The white packages already existed in CloudSim.
 
-image::package-structure-reduced-cloudforum.png[title="CloudSim Plus Simplified Package Diagram", scaledwidth="75%"]
+image::package-structure-reduced-cloudforum.png[title="CloudSim Plus Simplified Package Diagram", scaledwidth="70%"]
 
 CloudSim Plus also introduce documentation for every package, quickly explaining the goals of containing classes and interfaces, as well as the main class inside the package. Such a documentation is an excellent start point for researchers to get an overview of the framework.
 
 === How CloudSim Plus works
 Creating a cloud simulation using CloudSim Plus requires one to write a Java program to model the simulation scenario. The simplified diagram below presents the main interfaces involved in creating such scenarios. For every presented interface, there is one or more implementing classes that have to be actually instantiated.
 [[fig:class-diagram,Class Diagram]]
-image::reduced-main-classes-cloudforum.png[title="CloudSim Plus Simplified Class Diagram", scaledwidth="75%"]
+image::reduced-main-classes-cloudforum.png[title="CloudSim Plus Simplified Class Diagram", scaledwidth="70%"]
 
 The process of building a simulation scenario is described below. To see more details on how to use CloudSim Plus, please check the http://cloudsimplus.org/#how-to-use-cloudsim-plus:[How to use CloudSim Plus] section at the official website. A http://cloudsimplus.org/#a-minimal-and-complete-simulation-example:[minimal and complete simulation example] is available there too. 
 
@@ -88,16 +88,14 @@ A `Cloudlet` abstractly represents an application running inside a Vm. Cloudlets
 
 `UtilizationModels` define how different `Vm` resources will be used by a Cloudlet along the time, namely RAM, CPU and Bandwidth resources. Implementations such as the `UtilizationModelStochastic` allows defining resource usage in a random way, using some pseudo random number generator (PRNG). CloudSim Plus enables a researcher to define the PRNG implementation to use, following a statistical distribution that attends his/her goals.
 
-Cloudlet resource utilization can also be defined using the `UtilizationModelPlanetLabInMemory` class, that allows defining the usage based on a trace file from https://www.planet-lab.org:[Planet Lab Datacenters]. On the other hand, the `WorkloadModel` interface enables the creation of an entire set of `Cloudlets` based on different Datacenter traces file formats. Currently only the http://www.cs.huji.ac.il/labs/parallel/workload/:[Standard Workload Format] from
+Cloudlet resource utilization can also be defined using the `UtilizationModelPlanetLab` class, based on a trace file from https://www.planet-lab.org:[Planet Lab Datacenters]. On the other hand, the `WorkloadFileReader` class enables the creation of an entire set of `Cloudlets` based on different Datacenter traces file formats. Currently only the http://www.cs.huji.ac.il/labs/parallel/workload/:[Standard Workload Format] from
 new.huji.ac.il/en:[The Hebrew University of Jerusalem] is implemented.
 
 == Exclusive Characteristics and Features
 CloudSim Plus is a full-featured simulation framework which has introduced long-waited and exclusive features, that are presented below. It is also included discussions about how such features can be used. 
 
 === Dynamic creation of VMs and Applications (Cloudlets)
-CloudSim Plus allows on-demand creation of VMs and Cloudlets, without requiring creation of Datacenter Brokers at runtime. The `DatacenterBroker` class was updated enable submission of new VMs and Cloudlets during simulation execution and accordingly request the creation of such objects into the Cloud infrastructure.
-
-It also enables delaying the creation of submitted Cloudlets for simulation of dynamic arrival of tasks.
+CloudSim Plus allows on-demand creation of VMs and Cloudlets, without requiring creation of Datacenter Brokers at runtime. The `DatacenterBroker` class was updated enable submission of new VMs and Cloudlets during simulation execution and accordingly request the creation of such objects into the Cloud infrastructure. It also enables delaying the creation of submitted Cloudlets for simulation of dynamic arrival of tasks.
 
 === VM Scaling
 VM migration is a well-known mechanism used to optimize allocation of physical resources, that can be applied for different goals such as reduction of costs, energy consumption and resource wastage by consolidating multiple VMs into the same Host, reduction of network traffic by placing inter-communication VMs as close as possible, reduction of SLA violations by ensuring that the required resources will be available for hosted VMs, etc. It is a fundamental mechanism to provide the so called elasticity, that enables resources to be on-demand allocated or released.
@@ -106,7 +104,7 @@ However, VM migration is an expensive operation that causes service downtime, in
 
 These two different kinds of VM scaling, additionally with well-known VM migration algorithms, can be used selectively by a https://en.wikipedia.org/wiki/Hypervisor:[Hypervisor] to provide a very efficient VM allocation policy mechanism to define when it is time to vertically scale, horizontally scale or migrate a VM. Depending on specific conditions, one action can be favored over other ones or even different actions can be performed at a given time.
 
-CloudSim Plus VM Scaling mechanisms as discussed below.
+CloudSim Plus VM Scaling mechanisms are discussed below.
 
 ==== Vertical VM Scaling
 Vertical VM Scaling performs on-demand down or up allocation of VM resources such as Ram, Bandwidth and CPUs, according to under or overloaded VM condition, respectively. Since current hypervisors such as http://www.linux-kvm.org/page/Projects/auto-ballooning:[KVM] and VMware ESX allows dynamically changing allocation of https://labs.vmware.com/vmtj/memory-overcommitment-in-the-esx-server:[RAM] and https://pubs.vmware.com/vsphere-4-esx-vcenter/index.jsp?topic=/com.vmware.vsphere.vmadmin.doc_41/vsp_vm_guide/configuring_virtual_machines/t_change_cpu_hotplug_settings.html:[CPU] for a VM, that can be used to avoid VM migration in specific conditions.
@@ -179,12 +177,17 @@ Listeners inside the `CloudSim` class are the most general ones available in Clo
 - `onEventProcessingListener`: get notifications when any event is processed by CloudSim Plus. It is a more general Listener that provides the original data related to the happened event, that is totally dependent of the kind of event. Since CloudSim Plus is a discrete event simulation framework, any event that happens will be caught by such Listeners. Since it is the most generic Listener available, it may have several different uses. 
 
 === Strongly object-oriented framework
-CloudSim Plus was comprehensive re-engineered to create relationships among classes, enabling chained calls such as `cloudlet.getVm().getHost().getDatacenter()`. As the presented <<fig:class-diagram>> shows, an object,such as a `Cloudlet`, defines relationships to keep a reference to each object it is related to. Accordingly, the line of code presented above provides a direct way to know what `Vm` a `Cloudlet` is running or will run, what `Host` such a `Vm` is placed into and finally what is the `Datacenter` where such a `Host` is settled down. The https://en.wikipedia.org/wiki/Null_Object_pattern:[Null Object Design Pattern] was also implemented to avoid the infamous `NullPointerException` when making such a chained call.
+CloudSim Plus was comprehensive re-engineered to create relationships among classes, enabling chained calls such as `cloudlet.getVm().getHost().getDatacenter()`, instead of storing just integer IDs to represent the relationship among classes, which does not conform to an object-oriented design. As the presented <<fig:class-diagram>> shows, an object, such as a `Cloudlet`, defines relationships to keep a reference to each object it is related to. 
+
+The line of code presented above provides a direct way to know what `Vm` a `Cloudlet` is running or will run, what `Host` such a `Vm` is placed into, and finally what `Datacenter` such a `Host` is settled down. The https://en.wikipedia.org/wiki/Null_Object_pattern:[Null Object Design Pattern] was also implemented to avoid the so propagated `NullPointerException` when making such a chained call.
 
 === Classes and interfaces to allow implementation of heuristics
+Considering the large scale of cloud infrastructure, finding an optimal solution for issues such as Vm Placement is impracticable, since that is a NP-hard problem and thus an optimal solution cannot be found in polynomial time. Alternatively, http://en.wikipedia.org/wiki/Heuristic:[heuristic] techniques can be used to find a sub-optimal  and satisfactory solution in a reasonable time. 
 
-http://en.wikipedia.org/wiki/Heuristic:[Heuristics] such as 
-http://en.wikipedia.org/wiki/Tabu_search:[Tabu Search], http://en.wikipedia.org/wiki/Simulated_annealing:[Simulated Annealing], http://en.wikipedia.org/wiki/Ant_colony_optimization_algorithms:[Ant Colony Systems] and so on. 
+Some well-know heuristic methods include
+http://en.wikipedia.org/wiki/Tabu_search:[Tabu Search], http://en.wikipedia.org/wiki/Simulated_annealing:[Simulated Annealing] and http://en.wikipedia.org/wiki/Ant_colony_optimization_algorithms:[Ant Colony Systems]. These methods usually start with an initial random solution for a defined problem and iterative and randomly search other solutions. A fitness value to be maximized for each solution is computed by an utility function, then the solution finding stops when a desired fitness or number of iterations is reached. 
+
+CloudSim Plus provides a set of classes and interfaces to enable a researcher to build such heuristics for solving problems such as Vm placement and migration. The interfaces provide a contract by defining methods signatures to implement the solution cost function (the fitness function is just the inverse of the cost), the solution generation function, number of maximum iterations, the probability for accepting each random solution and the predicate to define when the solution finding must stop. The package https://github.com/manoelcampos/cloudsim-plus/tree/master/cloudsim-plus/src/main/java/org/cloudsimplus/heuristics:[org.cloudsimplus.heuristics] contains such classes and interfaces and also includes a Simulated annealing heuristic to map a set of `Cloudlets` to a set of `Vms`.
 
 === Implementation of the Completely Fair Scheduler
 The https://en.wikipedia.org/wiki/Completely_Fair_Scheduler:[Completely Fair Scheduler] used in recent version of the Linux Kernel.
