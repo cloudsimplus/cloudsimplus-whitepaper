@@ -1,5 +1,5 @@
 SOURCE=README.adoc
-TARGET=cloudsim-plus-article
+TARGET=cloudsim-plus-cloudforum
 all: html pdf
 
 install:
