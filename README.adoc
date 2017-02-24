@@ -60,7 +60,7 @@ Creating a cloud simulation using CloudSim Plus requires one to write a Java pro
 [[fig:class-diagram,Class Diagram]]
 image::reduced-main-classes-cloudforum.png[title="CloudSim Plus Simplified Class Diagram", scaledwidth="70%"]
 
-The process of building a simulation scenario is described below. The goal of this section is to provide an overview of how to build cloud simulations using CloudSim Plus. It is not going to present the implementing classes for every presented interface. More details on how to use CloudSim Plus are available in the http://cloudsimplus.org/#how-to-use-cloudsim-plus[How to use CloudSim Plus] section at the official website, including a http://cloudsimplus.org/#a-minimal-and-complete-simulation-example[minimal and complete simulation example]. 
+The process of building a simulation scenario is described below. The goal of this section is to provide an overview of how to build cloud simulations using CloudSim Plus. It is not going to present the implementing classes for every presented interface. More details on how to use CloudSim Plus are available in the http://cloudsimplus.org/#how-to-use-cloudsim-plus[How to use CloudSim Plus] section at the official website. A complete simulation example is presented in the last sub-section of this section. 
 
 `CloudSim` class is the first one that needs to be instantiated to start building a cloud simulation. CloudSim Plus just requires it to be instantiated using the default, no-arguments constructor, to initialize the simulation. The remaining objects that need to be instantiated are described as follows.
 
@@ -90,6 +90,20 @@ A `Cloudlet` abstractly represents an application running inside a `Vm`. `Cloudl
 
 `Cloudlet` resource utilization can also be defined using the `UtilizationModelPlanetLab` class, based on a trace file from https://www.planet-lab.org[Planet Lab Datacenters]. On the other hand, the `WorkloadFileReader` class enables the creation of an entire set of `Cloudlets` based on different Datacenter traces file formats. Currently only the http://www.cs.huji.ac.il/labs/parallel/workload/[Standard Workload Format] from
 http://new.huji.ac.il/en[The Hebrew University of Jerusalem] is implemented.
+
+==== A minimal and complete example
+:ReducedExample: {src}/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/ReducedExample.java
+
+The source code below shows a minimal but complete simulation example. It just omits the package imports and the common structure of a Java class. The presented code is only the content of the `main` method, putting everything together into a single method, just for demonstration purposes. The complete example is available https://github.com/manoelcampos/cloudsim-plus/blob/master/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/ReducedExample.java[here].
+
+[source,java]
+----
+include::{ReducedExample}[tags="cloudsim-plus-reduced-example",indent=0]
+----
+
+A more adequate and reusable example is available
+https://github.com/manoelcampos/cloudsim-plus/blob/master/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/BasicFirstExample.java[here],
+together with https://github.com/manoelcampos/cloudsim-plus/blob/master/cloudsim-plus-examples/[other examples]. Examples of CloudSim Plus exclusive features can be found https://github.com/manoelcampos/cloudsim-plus/blob/master/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/[here]. 
 
 == Exclusive Characteristics and Features
 CloudSim Plus is a full-featured simulation framework that has introduced exclusive features, presented below. The next sub-sections also discuss how such features can be used. 
@@ -200,11 +214,22 @@ Besides all the exclusive features that have been presented, CloudSim Plus has a
 - Updated to Java 8, making extensive use of http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html[Lambda Expressions] and http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html[Streams API] to improve efficiency and provide a cleaner and easier-to-maintain code.
 
 == Conclusion
+CloudSim Plus is an updated cloud simulation framework that relies on the most recent advances of the Java language. It provides a more extensible, cleaner and easy-to-understand code that encourage developers to contribute. It uses industry-standard tools to:
+
+- https://www.codacy.com/app/manoelcampos/cloudsim-plus/dashboard[measure code quality];
+- automate builds and the execution of unit and integration tests into an https://travis-ci.org/manoelcampos/cloudsim-plus[continuous integration environment];
+- host its meaningful and extended http://cloudsimplus.rtfd.io/en/latest/[documentation in a searchable way], enabling documentation versioning.
+
+The redesign and refactoring performed in CloudSim Plus enabled reducing code duplication, making it easier to extend. The tools presented above provide an ecosystem to properly support contributions by tracking code quality and software regression. In this process, https://github.com/manoelcampos/cloudsim-plus/issues[several issues were detected and fixed], improving the framework correctness. 
+
+Finally, all the new CloudSim Plus features allow researchers to implement more realistic, complex and accurate simulations. Even the scale of simulation experiments may be enlarged by running experiments in parallel. All these characteristics and features make CloudSim Plus a promising cloud simulation framework.
 
 == Acknowledge
 
 CloudSim Plus is developed through a partnership among the Systems, Security and Image Communication Lab of http://www.it.pt[Instituto de Telecomunicações (IT, Portugal)], 
 the http://www.ubi.pt[Universidade da Beira Interior (UBI, Portugal)] and the 
 http://www.ifto.edu.br[Instituto Federal de Educação Ciência e Tecnologia do Tocantins (IFTO, Brazil)]. 
-It is supported by the Portuguese https://www.fct.pt[Fundação para a Ciência e a Tecnologia (FCT)] (under the UID/EEA/50008/2013 Project) and by the http://www.capes.gov.br[Brazilian foundation Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES)] (Proc. no 13585/13-4). We would like to thank these institutions for all the provided support.
+It is supported by the Portuguese https://www.fct.pt[Fundação para a Ciência e a Tecnologia (FCT)] (under the UID/EEA/50008/2013 Project) and by the http://www.capes.gov.br[Brazilian foundation Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES)] (Proc. no 13585/13-4). 
+
+We would like to thank these institutions for all the provided support and the EU-Brazil Cloud Forum for this opportunity.
 
