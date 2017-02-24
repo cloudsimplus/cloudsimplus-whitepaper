@@ -55,14 +55,14 @@ CloudSim Plus also introduces documentation for every package, quickly explainin
 
 [[sec:how-cloudsim-plus-works,How CloudSim Plus Works]]
 === How CloudSim Plus Works
-Creating a cloud simulation using CloudSim Plus requires one to write a Java program that models the simulation scenario. The simplified diagram below presents the main interfaces involved in creating such scenarios. For every presented interface, there is one or more implementing classes that have to be actually instantiated. 
+Creating a cloud simulation using CloudSim Plus requires one to write a Java program that models the simulation scenario. The simplified diagram below presents the main interfaces involved in creating such scenarios. For every presented interface, there is one or more implementing classes that have to be actually instantiated (methods, attributes and several implementing classes were omitted for simplification). 
 
 [[fig:class-diagram,Class Diagram]]
 image::reduced-main-classes-cloudforum.png[title="CloudSim Plus Simplified Class Diagram", scaledwidth="70%"]
 
-The process of building a simulation scenario is described below. The goal of this section is to provide an overview of how to build cloud simulations using CloudSim Plus. It is not going to present the implementing classes for every presented interface. More details on how to use CloudSim Plus are available in the http://cloudsimplus.org/#how-to-use-cloudsim-plus[How to use CloudSim Plus] section at the official website. A complete simulation example is presented in the last sub-section of this section. 
+The process of building a simulation scenario is described below. The goal of this section is to provide an overview of how to build cloud simulations using CloudSim Plus. It is not going to present the implementing classes for every presented interface. A complete simulation example is presented in the last sub-section of this section. More details on how to use CloudSim Plus are available at the http://cloudsimplus.org[official website].
 
-`CloudSim` class is the first one that needs to be instantiated to start building a cloud simulation. CloudSim Plus just requires it to be instantiated using the default, no-arguments constructor, to initialize the simulation. The remaining objects that need to be instantiated are described as follows.
+`CloudSim` class is the first one that needs to be instantiated to start building a cloud simulation. CloudSim Plus just requires it to be instantiated using the default no-arguments constructor to initialize the simulation. The remaining objects that need to be instantiated are described as follows.
 
 ==== Datacenter
 Instances of a `Datacenter` must be created to represent the different data centers that make up the cloud infrastructure. Each `Datacenter` has a set of characteristics (such as its timezone and costs for charging customers) defined by a `DatacenterCharacteristics` object. A `Datacenter` also needs a `VmAllocationPolicy`, which defines the policy used to select a `Host` to place or migrate Virtual Machines (`Vms`).
@@ -94,7 +94,7 @@ http://new.huji.ac.il/en[The Hebrew University of Jerusalem] is implemented.
 ==== A minimal and complete example
 :ReducedExample: {src}/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/ReducedExample.java
 
-The source code below shows a minimal but complete simulation example. It just omits the package imports and the common structure of a Java class. The presented code is only the content of the `main` method, putting everything together into a single method, just for demonstration purposes. The complete example is available https://github.com/manoelcampos/cloudsim-plus/blob/master/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/ReducedExample.java[here].
+The source code below shows a minimal but complete simulation example. After presenting the objects required for a simulation, understanding the example is simple. Included comments provide a general view of what is being made and it is not the intention to go through the details. It just omits the package imports and the common structure of a Java class. The presented code is only the content of the `main` method, putting everything together into a single method, just for demonstration purposes. The complete example is available https://github.com/manoelcampos/cloudsim-plus/blob/master/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/ReducedExample.java[here].
 
 [source,java]
 ----
