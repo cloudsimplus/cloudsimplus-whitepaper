@@ -1,13 +1,17 @@
 = CloudSim Plus: A Modern Java 8 Framework for Modeling and Simulation of Cloud Computing Infrastructures and Services
-Manoel C. Silva_Filho <http://twitter.com/manoelcampos>; Raysa L. Oliveira <https://twitter.com/raysaloliveira>; Claudio C. Monteiro; Pedro_R. M. Inácio; Mário M. Freire.
 :homepage: http://cloudsimplus.org
 :source-highlighter: coderay
 :imagesdir: images
 :src: ../../projects/cloudsim-plus
 :toc:
 
+_Manoel C. Silva Filho^1,2^; Raysa L. Oliveira^2^; Claudio C. Monteiro^1^; Pedro R. M. Inácio^2^; Mário M. Freire^2^_
+
+_^1^Departamento de Informática - http://www.ifto.edu.br[Instituto Federal de Educação do Tocantins (IFTO)]_. _^2^http://www.it.pt[Instituto de Telecomunicações (IT)] and http://di.ubi.pt[Departamento de Informática], http://www.ubi.pt[Universidade da Beira Interior (UBI)]._
+
 image::https://licensebuttons.net/l/by-sa/4.0/88x31.png[]
 This work is licensed under a http://creativecommons.org/licenses/by-sa/4.0/[Creative Commons Attribution-ShareAlike 4.0 International License].
+
 
 == Introduction
 The Cloud Computing paradigm has been driving innovation in different areas of knowledge and economic sectors by providing distributed, scalable, manageable and fault-tolerant computing resources over the Internet. The large adoption of Cloud computing services can be also explained by diverse reasons such as: its pay-per-use charging model, which enables cost reduction for customers; the rapid and automated allocation of resources, which enable applications to quickly respond to bursts; and full-featured web and console interfaces, which enable customers to configure hosted services easily.
@@ -217,7 +221,7 @@ Besides all the exclusive features that have been presented, CloudSim Plus has a
 CloudSim Plus is an updated cloud simulation framework that relies on the most recent advances of the Java language. It provides a more extensible, cleaner and easy-to-understand code that encourage developers to contribute. It uses industry-standard tools to:
 
 - https://www.codacy.com/app/manoelcampos/cloudsim-plus/dashboard[measure code quality];
-- automate builds and the execution of unit and integration tests into an https://travis-ci.org/manoelcampos/cloudsim-plus[continuous integration environment];
+- automate builds and the execution of unit and integration tests into a https://travis-ci.org/manoelcampos/cloudsim-plus[continuous integration environment];
 - host its meaningful and extended http://cloudsimplus.rtfd.io/en/latest/[documentation in a searchable way], enabling documentation versioning.
 
 The redesign and refactoring performed in CloudSim Plus enabled reducing code duplication, making it easier to extend. The tools presented above provide an ecosystem to properly support contributions by tracking code quality and software regression. In this process, https://github.com/manoelcampos/cloudsim-plus/issues[several issues were detected and fixed], improving the framework correctness. 
