@@ -1,4 +1,4 @@
-SOURCE=README.adoc
+SOURCE=index.adoc
 TARGET=cloudsim-plus-cloudforum
 all: html pdf
 
