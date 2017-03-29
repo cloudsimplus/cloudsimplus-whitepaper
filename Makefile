@@ -1,5 +1,5 @@
 SOURCE=index.adoc
-TARGET=cloudsim-plus-cloudforum
+TARGET=cloudsim-plus-white-paper
 all: html pdf
 
 install:

@@ -25,7 +25,7 @@ CloudSim Plus is an open source project available at http://cloudsimplus.org and
 CloudSim Plus is based on CloudSim 3. It went through an extensive re-design and re-engineering process to provide an updated, modern, highly extensible and easier-to-use cloud simulation framework. These changes aim to enable sustainable project maintainability for long-term evolution. To achieve such goals, CloudSim Plus is founded on several software design and engineering metrics, principles and practices such as https://en.wikipedia.org/wiki/Coupling_(computer_programming)[Coupling], https://en.wikipedia.org/wiki/Cohesion_(computer_science)[Cohesion], https://en.wikipedia.org/wiki/Software_design_pattern[Design Patterns], https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)[SOLID principles] and other ones like https://pt.wikipedia.org/wiki/Don't_repeat_yourself[Don't Repeat Yourself (DRY)] and https://en.wikipedia.org/wiki/KISS_principle[KISS].
 
 == Architecture
-CloudSim Plus is a Java Maven project that has a simple module and package structures. The entire project is compounded of 4 modules that were re-organized to directly inherit from the parent project, allowing a researcher to quickly have an overview of the structure. Redundant and out-of-date modules such as "distribution" and "documentation" were removed since building distribution artifacts and documentation is already automated using Maven.
+CloudSim Plus is a Java project that has both simpler module and package structures. The entire project is compounded of 4 modules that were re-organized to directly inherit from the parent project, allowing a researcher to quickly have an overview of the structure. Redundant and out-of-date modules such as "distribution" and "documentation" were removed since building distribution artifacts and documentation is already automated using Maven.
 
 Figure 1 presents the current project architecture and its modules are described as follows. The highlighted modules are new in CloudSim Plus.
 
@@ -106,7 +106,7 @@ The redesign and refactoring performed in CloudSim Plus enabled reducing code du
 
 Finally, all the new CloudSim Plus features allow researchers to implement more realistic, complex and accurate simulations. Even the scale of simulation experiments may be enlarged by running experiments in parallel. All these characteristics and features make CloudSim Plus a promising cloud simulation framework.
 
-== Acknowledge
+== Acknowledgements
 
 CloudSim Plus is developed through a partnership among the Systems, Security and Image Communication Lab of http://www.it.pt[Instituto de Telecomunicações (IT, Portugal)], 
 the http://www.ubi.pt[Universidade da Beira Interior (UBI, Portugal)] and the 
