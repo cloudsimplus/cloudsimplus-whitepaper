@@ -4,4 +4,4 @@
 This is the summarized article version for the http://eubrasilcloudforum.eu[EU/Brazil Cloud Forum].
 The article is available link:index.adoc[here].
 
-The complete version for the thesis is available at the https://github.com/manoelcampos/cloudsim-plus-cloudforum[master branch].
+The complete version for the thesis is available at the https://github.com/manoelcampos/cloudsim-plus-whitepaper/tree/extended[extended branch].
