@@ -1,7 +1,7 @@
 = CloudSim Plus: A Modern Java 8 Framework for Modeling and Simulation of Cloud Computing Infrastructures and Services
 :homepage: http://cloudsimplus.org
 
-This is the summarized article version for the http://eubrasilcloudforum.eu[EU/Brazil Cloud Forum].
+This is a summarized http://cloudsimplus.org[CloudSim Plus] article for the http://eubrasilcloudforum.eu[EU/Brazil Cloud Forum].
 The article is available link:index.adoc[here].
 
 The complete version for the thesis is available at the https://github.com/manoelcampos/cloudsim-plus-whitepaper/tree/extended[extended branch].
