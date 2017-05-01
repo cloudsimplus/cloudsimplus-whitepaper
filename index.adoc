@@ -228,7 +228,7 @@ The redesign and refactoring performed in CloudSim Plus enabled reducing code du
 
 Finally, all the new CloudSim Plus features allow researchers to implement more realistic, complex and accurate simulations. Even the scale of simulation experiments may be enlarged by running experiments in parallel. All these characteristics and features make CloudSim Plus a promising cloud simulation framework.
 
-== Acknowledge
+== Acknowledgements
 
 CloudSim Plus is developed through a partnership among the Systems, Security and Image Communication Lab of http://www.it.pt[Instituto de Telecomunicações (IT, Portugal)], 
 the http://www.ubi.pt[Universidade da Beira Interior (UBI, Portugal)] and the 
