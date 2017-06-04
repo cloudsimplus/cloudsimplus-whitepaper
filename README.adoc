@@ -5,3 +5,7 @@ This is a summarized http://cloudsimplus.org[CloudSim Plus] article for the http
 The article is available link:index.adoc[here].
 
 The complete version for the thesis is available at the https://github.com/manoelcampos/cloudsim-plus-whitepaper/tree/extended[extended branch].
+
+ifdef::env-github[]
+GitHub is now running Asciidoctor {asciidoctor-version}.
+endif::[]
