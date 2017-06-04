@@ -5,3 +5,8 @@ This is the full version of a http://cloudsimplus.org[CloudSim Plus] article to 
 The article is available link:index.adoc[here].
 
 The version for the http://eubrasilcloudforum.eu[EU/Brazil Cloud Forum] is available at the https://github.com/manoelcampos/cloudsim-plus-whitepaper[master branch].
+
+== AsciiDoctor Version
+ifdef::env-github[]
+GitHub is now running Asciidoctor {asciidoctor-version}.
+endif::[]
