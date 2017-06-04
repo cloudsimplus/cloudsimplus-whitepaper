@@ -3,6 +3,7 @@
 :source-highlighter: coderay
 :imagesdir: images
 :src: ../../projects/cloudsim-plus
+:allow-uri-read:
 :toc:
 
 _Manoel C. Silva Filho^1,2^; Raysa L. Oliveira^2^; Claudio C. Monteiro^1^; Pedro R. M. Inácio^2^; Mário M. Freire^2^_
