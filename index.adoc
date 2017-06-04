@@ -102,7 +102,7 @@ The source code below shows a minimal but complete simulation example. After pre
 
 [source,java]
 ----
-include::https://raw.githubusercontent.com/manoelcampos/cloudsim-plus/master/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/ReducedExample.java[]
+include::http://raw.githubusercontent.com/manoelcampos/cloudsim-plus/master/cloudsim-plus-examples/src/main/java/org/cloudsimplus/examples/ReducedExample.java[]
 ----
 
 A more adequate and reusable example is available
