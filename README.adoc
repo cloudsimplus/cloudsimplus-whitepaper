@@ -9,7 +9,7 @@
 :numbered:
 
 ifdef::env-github[]
-= {title} image:https://github.com/cloudsimplus/cloudsimplus-whitepaper/workflows/build-paper/badge.svg[GitHub Pages Publish,link=https://cloudsimplus.github.io/cloudsimplus-whitepaper]
+= {title} image:https://github.com/cloudsimplus/cloudsimplus-whitepaper/actions/workflows/build-paper.yml/badge.svg[GitHub Pages Build,link=https://cloudsimplus.github.io/cloudsimplus-whitepaper]
 endif::[]
 
 ifndef::env-github[]
