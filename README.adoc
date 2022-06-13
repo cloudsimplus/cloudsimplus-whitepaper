@@ -5,8 +5,12 @@
 :src: ..
 :allow-uri-read:
 :safe: unsafe
-:toc: left
 :numbered:
+
+ifndef::env-github[]
+:toc: left
+= {title}
+endif::[]
 
 = CloudSim Plus: A Modern Java 8 Framework for Modeling and Simulation of Cloud Computing Infrastructures and Services
 
