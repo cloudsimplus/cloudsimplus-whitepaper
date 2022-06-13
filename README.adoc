@@ -9,6 +9,13 @@
 :numbered:
 
 ifdef::env-github[]
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+
 = {title} image:https://github.com/cloudsimplus/cloudsimplus-whitepaper/actions/workflows/build-paper.yml/badge.svg[GitHub Pages Build,link=https://cloudsimplus.github.io/cloudsimplus-whitepaper]
 endif::[]
 
