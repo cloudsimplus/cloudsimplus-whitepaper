@@ -30,7 +30,7 @@ _^1^Departamento de Informática - http://www.ifto.edu.br[Instituto Federal de E
 image::https://licensebuttons.net/l/by-sa/4.0/88x31.png[]
 The content of this paper is licensed under a http://creativecommons.org/licenses/by-sa/4.0/[Creative Commons Attribution-ShareAlike 4.0 International License]. CloudSim Plus license information is available at the http://cloudsimplus.org[official site].
 
-NOTE: This is a summarized http://cloudsimplus.org[CloudSim Plus] article for the http://eubrasilcloudforum.eu[EU/Brazil Cloud Forum]. The complete version is available at the https://github.com/cloudsimplus/cloudsim-plus-whitepaper[main branch].
+NOTE: This is a summarized http://cloudsimplus.org[CloudSim Plus] white paper for the http://eubrasilcloudforum.eu[EU/Brazil Cloud Forum]. The complete version is available at the https://github.com/cloudsimplus/cloudsim-plus-whitepaper[main branch].
 
 == Introduction
 The Cloud Computing paradigm has been driving innovation in different areas of knowledge and economic sectors by providing distributed, scalable, manageable and fault-tolerant computing resources over the Internet. The large adoption of Cloud computing services can be also explained by diverse reasons such as: its pay-per-use charging model, which enables cost reduction for customers; the rapid and automated allocation of resources, which enable applications to quickly respond to bursts; and full-featured web and console interfaces, which enable customers to configure hosted services easily.
