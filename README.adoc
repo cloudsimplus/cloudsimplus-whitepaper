@@ -6,7 +6,6 @@
 :src: ..
 :allow-uri-read:
 :safe: unsafe
-:toc: left
 :numbered:
 
 ifdef::env-github[]
@@ -14,6 +13,7 @@ ifdef::env-github[]
 endif::[]
 
 ifndef::env-github[]
+:toc: left
 = {title}
 endif::[]
 
